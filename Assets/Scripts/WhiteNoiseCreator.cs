@@ -1,3 +1,4 @@
+using System;
 using Unity.Collections;
 using Unity.Jobs;
 using Unity.Mathematics;
@@ -42,6 +43,16 @@ namespace Game
             noiseTexture = new Texture2D(width, height, TextureFormat.RGBA32, false);
 
             background.sprite = Sprite.Create(noiseTexture, new Rect(Vector2.zero, new Vector2(width, height)), Vector2.zero);
+        }
+
+        private void OnEnable()
+        {
+            background.gameObject.SetActive(true);
+        }
+
+        private void OnDisable()
+        {
+            background.gameObject.SetActive(false);
         }
 
         private void Update()

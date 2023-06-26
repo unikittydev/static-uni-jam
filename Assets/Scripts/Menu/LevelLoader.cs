@@ -1,7 +1,6 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 namespace Game
 {
@@ -14,6 +13,11 @@ namespace Game
 
         [SerializeField] private LevelButton levelButtonPrefab;
         [SerializeField] private Transform levelListPanel;
+
+        [SerializeField]
+        private GameObject menu;
+        [SerializeField] private WhiteNoiseCreator noiseGenerator;
+        [SerializeField] private ImageFader screenOverlay;
         
         private void Start()
         {
@@ -26,7 +30,6 @@ namespace Game
 
             for (int i = 0; i < levelIndices.Length; i++)
             {
-
                 int level = levelIndices[i];
                 if (level > lastLevel)
                     return;
@@ -45,9 +48,19 @@ namespace Game
         private IEnumerator LoadLevelAdditiveCoroutine(int index)
         {
             AsyncOperation sceneLoad = SceneManager.LoadSceneAsync(index, LoadSceneMode.Additive);
+            sceneLoad.allowSceneActivation = false;
 
-            while (!sceneLoad.isDone)
+            noiseGenerator.enabled = true;
+            yield return StartCoroutine(screenOverlay.SetFade(true));
+            noiseGenerator.enabled = false;
+            menu.SetActive(false);
+
+            while (sceneLoad.progress < 0.9f)
                 yield return null;
+
+            sceneLoad.allowSceneActivation = true;
+            
+            yield return StartCoroutine(screenOverlay.SetFade(false));
         }
     }
 }
