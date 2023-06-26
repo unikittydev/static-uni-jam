@@ -13,8 +13,8 @@ EditorBuildSettings:
     guid: 02e024315b602ce49a10fe77c82e4a58
   - enabled: 1
     path: Assets/Scenes/Levels/Lvl 2 lamps.unity
-    guid: f3fda32b03bf1b349991d18a6f388ab8
+    guid: 0a9d8105ca86a0b4ca623e42c278d399
   - enabled: 1
     path: Assets/Scenes/Levels/Lvl 3 lamps.unity
-    guid: 0a9d8105ca86a0b4ca623e42c278d399
+    guid: f3fda32b03bf1b349991d18a6f388ab8
   m_configObjects: {}
