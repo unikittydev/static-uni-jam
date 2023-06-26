@@ -44,8 +44,7 @@ namespace Game
 
         private IEnumerator LoadLevelAdditiveCoroutine(int index)
         {
-            AsyncOperation sceneLoad = SceneManager.LoadSceneAsync(index,
-                new LoadSceneParameters(LoadSceneMode.Additive, LocalPhysicsMode.Physics2D));
+            AsyncOperation sceneLoad = SceneManager.LoadSceneAsync(index, LoadSceneMode.Additive);
 
             while (!sceneLoad.isDone)
                 yield return null;
