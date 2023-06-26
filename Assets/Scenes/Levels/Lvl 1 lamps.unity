@@ -321,6 +321,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lamp 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6338617720694628983, guid: 820838f4be02e3a4aa2c10753fe88ef2, type: 3}
+      propertyPath: condition
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -606,6 +610,10 @@ PrefabInstance:
     - target: {fileID: 5392961677774366908, guid: 820838f4be02e3a4aa2c10753fe88ef2, type: 3}
       propertyPath: m_Name
       value: Lamp 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6338617720694628983, guid: 820838f4be02e3a4aa2c10753fe88ef2, type: 3}
+      propertyPath: condition
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
