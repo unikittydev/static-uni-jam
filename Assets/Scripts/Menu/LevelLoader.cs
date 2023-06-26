@@ -30,9 +30,8 @@ namespace Game
                 if (level > lastLevel)
                     return;
 
-                Debug.Log(level);
                 LevelButton levelButton = Instantiate(levelButtonPrefab, levelListPanel);
-                levelButton.name = string.Format(LEVEL_NAME_FORMAT, level);
+                levelButton.text.text = string.Format(LEVEL_NAME_FORMAT, level);
                 levelButton.button.onClick.AddListener(() => LoadLevelAdditive(level));
             }
         }
