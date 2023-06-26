@@ -13,11 +13,6 @@ public class LampController : MonoBehaviour
         UpdateSprite();
     }
 
-    private void OnValidate()
-    {
-        UpdateSprite();
-    }
-    
     public void SwitchCondition()
     {
         condition = !condition;
