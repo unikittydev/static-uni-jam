@@ -8,6 +8,9 @@ public class LampController : MonoBehaviour
     [SerializeField]
     private GameObject spriteOn;
 
+    [SerializeField]
+    private GameObject spriteOff;
+
     private void Start()
     {
         UpdateSprite();
@@ -22,6 +25,7 @@ public class LampController : MonoBehaviour
     private void UpdateSprite()
     {
         spriteOn.SetActive(condition);
+        spriteOff.SetActive(!condition);
     }
 
     public bool CheckCondition()

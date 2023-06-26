@@ -216,3 +216,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   condition: 1
   spriteOn: {fileID: 775077226518354659}
+  spriteOff: {fileID: 3146999711902162486}
