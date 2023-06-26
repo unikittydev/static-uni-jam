@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class LampController : MonoBehaviour
@@ -7,14 +5,19 @@ public class LampController : MonoBehaviour
     [SerializeField]
     private bool condition;
 
+    [SerializeField]
     private GameObject spriteOn;
 
     private void Start()
     {
-        spriteOn = transform.GetChild(0).gameObject;
         UpdateSprite();
     }
 
+    private void OnValidate()
+    {
+        SwitchCondition();
+    }
+    
     public void SwitchCondition()
     {
         condition = !condition;
