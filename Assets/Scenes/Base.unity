@@ -355,7 +355,7 @@ Camera:
   m_TargetEye: 0
   m_HDR: 1
   m_AllowMSAA: 1
-  m_AllowDynamicResolution: 1
+  m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 0
   m_StereoConvergence: 10
@@ -2581,7 +2581,7 @@ MonoBehaviour:
   levelIndices: 01000000
   levelButtonPrefab: {fileID: 3344483558849025958, guid: dba80e2be5e13de40a437c376acdfa85, type: 3}
   levelListPanel: {fileID: 453501434}
-  ui: {fileID: 1951676664}
+  menu: {fileID: 767634269}
   noiseGenerator: {fileID: 904693927}
   screenOverlay: {fileID: 1198004161}
 --- !u!1001 &1675206106
