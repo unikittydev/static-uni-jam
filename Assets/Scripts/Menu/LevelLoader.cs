@@ -31,8 +31,8 @@ namespace Game
             for (int i = 0; i < levelIndices.Length; i++)
             {
                 int level = levelIndices[i];
-                if (level > lastLevel)
-                    return;
+                //if (level > lastLevel)
+                //    return;
 
                 LevelButton levelButton = Instantiate(levelButtonPrefab, levelListPanel);
                 levelButton.text.text = string.Format(LEVEL_NAME_FORMAT, level);
