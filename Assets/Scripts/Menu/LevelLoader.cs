@@ -22,10 +22,11 @@ namespace Game
 
         private void AddLevelButtons()
         {
-            int lastLevel = PlayerPrefs.GetInt(LAST_COMPLETED_LEVEL, levelIndices[1]);
+            int lastLevel = PlayerPrefs.GetInt(LAST_COMPLETED_LEVEL, levelIndices[0]);
 
             for (int i = 0; i < levelIndices.Length; i++)
             {
+
                 int level = levelIndices[i];
                 if (level > lastLevel)
                     return;

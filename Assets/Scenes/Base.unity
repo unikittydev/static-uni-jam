@@ -2435,7 +2435,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d20780bc4514233469bfae579158e104, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelIndices: 010000000200000003000000
+  levelIndices: 0100000002000000
   levelButtonPrefab: {fileID: 3344483558849025958, guid: dba80e2be5e13de40a437c376acdfa85, type: 3}
   levelListPanel: {fileID: 453501434}
 --- !u!1001 &1675206106
