@@ -15,7 +15,7 @@ public class LampController : MonoBehaviour
 
     private void OnValidate()
     {
-        SwitchCondition();
+        UpdateSprite();
     }
     
     public void SwitchCondition()
