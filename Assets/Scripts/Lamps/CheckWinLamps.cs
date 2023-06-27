@@ -1,6 +1,5 @@
 using Game;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class CheckWinLamps : PuzzleBase
 {
@@ -18,8 +17,11 @@ public class CheckWinLamps : PuzzleBase
     {
         foreach (var item in lamps)
             if (!item.GetComponent<LampController>().CheckCondition())
+            {
+                CancelWin();
                 return;
-        
-        onPuzzleCompleted.Invoke();
+            }
+
+        TryWin();
     }
 }
