@@ -24,6 +24,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Lamps Levels/Lvl 5 lamps.unity
     guid: 02869d73f303b81449f2f7c2debc889a
   - enabled: 1
+    path: Assets/Scenes/Charges Levels/Lvl 1 charges.unity
+    guid: 5ceb17797cc3fbc46a746cb0ebf2acad
+  - enabled: 1
     path: Assets/Scenes/Charges Levels/Lvl 2 charges.unity
     guid: af765364d46a09b44885da3f4127c468
   m_configObjects: {}
