@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class SwitchController : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class SwitchController : MonoBehaviour
     
     void OnMouseDown()
     {
+        if (EventSystem.current.IsPointerOverGameObject())
+            return;
         foreach (var l in lamps)
             l.SwitchCondition();
 

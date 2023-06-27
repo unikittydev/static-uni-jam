@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace Game
 {
@@ -43,7 +44,7 @@ namespace Game
 
         private void OnMouseDown()
         {
-            if (!interactable)
+            if (!interactable || EventSystem.current.IsPointerOverGameObject())
                 return; 
             _state = (ChargeState)(((int)state + 1) % 3);
             UpdateState();
