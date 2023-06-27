@@ -3,13 +3,15 @@ using UnityEngine;
 public class LampController : MonoBehaviour
 {
     [SerializeField]
-    private bool condition;
+    private bool condition = true;
 
     [SerializeField]
     private GameObject spriteOn;
 
     [SerializeField]
     private GameObject spriteOff;
+
+    [ContextMenu("SwitchCondition")]
 
     private void Start()
     {
