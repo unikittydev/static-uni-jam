@@ -206,12 +206,12 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1226480238912333109, guid: beda8840a69e17f45ac4188ca0e4602a, type: 3}
       propertyPath: lamps.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1226480238912333109, guid: beda8840a69e17f45ac4188ca0e4602a, type: 3}
       propertyPath: lamps.Array.data[0]
       value: 
-      objectReference: {fileID: 850342781}
+      objectReference: {fileID: 1563414268}
     - target: {fileID: 1226480238912333109, guid: beda8840a69e17f45ac4188ca0e4602a, type: 3}
       propertyPath: lamps.Array.data[1]
       value: 
@@ -219,7 +219,7 @@ PrefabInstance:
     - target: {fileID: 1226480238912333109, guid: beda8840a69e17f45ac4188ca0e4602a, type: 3}
       propertyPath: lamps.Array.data[2]
       value: 
-      objectReference: {fileID: 625669453}
+      objectReference: {fileID: 1007996632}
     - target: {fileID: 1226480238912333109, guid: beda8840a69e17f45ac4188ca0e4602a, type: 3}
       propertyPath: lamps.Array.data[3]
       value: 
@@ -438,7 +438,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1226480238912333109, guid: beda8840a69e17f45ac4188ca0e4602a, type: 3}
       propertyPath: lamps.Array.size
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1226480238912333109, guid: beda8840a69e17f45ac4188ca0e4602a, type: 3}
       propertyPath: lamps.Array.data[0]
@@ -660,6 +660,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 820838f4be02e3a4aa2c10753fe88ef2, type: 3}
+--- !u!1 &408223548 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5392961677774366908, guid: 820838f4be02e3a4aa2c10753fe88ef2, type: 3}
+  m_PrefabInstance: {fileID: 408223547}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &439197294 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5392961677774366908, guid: 820838f4be02e3a4aa2c10753fe88ef2, type: 3}
@@ -727,11 +732,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 775077226518354659, guid: 820838f4be02e3a4aa2c10753fe88ef2, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3146999711902162486, guid: 820838f4be02e3a4aa2c10753fe88ef2, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3873441734085739235, guid: 820838f4be02e3a4aa2c10753fe88ef2, type: 3}
       propertyPath: m_RootOrder
@@ -783,7 +788,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6338617720694628983, guid: 820838f4be02e3a4aa2c10753fe88ef2, type: 3}
       propertyPath: condition
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -868,24 +873,32 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1226480238912333109, guid: beda8840a69e17f45ac4188ca0e4602a, type: 3}
       propertyPath: lamps.Array.size
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1226480238912333109, guid: beda8840a69e17f45ac4188ca0e4602a, type: 3}
       propertyPath: lamps.Array.data[0]
       value: 
-      objectReference: {fileID: 177317598}
+      objectReference: {fileID: 1395402848}
     - target: {fileID: 1226480238912333109, guid: beda8840a69e17f45ac4188ca0e4602a, type: 3}
       propertyPath: lamps.Array.data[1]
       value: 
-      objectReference: {fileID: 439197294}
+      objectReference: {fileID: 177317598}
     - target: {fileID: 1226480238912333109, guid: beda8840a69e17f45ac4188ca0e4602a, type: 3}
       propertyPath: lamps.Array.data[2]
       value: 
-      objectReference: {fileID: 625669453}
+      objectReference: {fileID: 439197294}
     - target: {fileID: 1226480238912333109, guid: beda8840a69e17f45ac4188ca0e4602a, type: 3}
       propertyPath: lamps.Array.data[3]
       value: 
-      objectReference: {fileID: 1350069155}
+      objectReference: {fileID: 1563414268}
+    - target: {fileID: 1226480238912333109, guid: beda8840a69e17f45ac4188ca0e4602a, type: 3}
+      propertyPath: lamps.Array.data[4]
+      value: 
+      objectReference: {fileID: 850342781}
+    - target: {fileID: 1226480238912333109, guid: beda8840a69e17f45ac4188ca0e4602a, type: 3}
+      propertyPath: lamps.Array.data[5]
+      value: 
+      objectReference: {fileID: 957710531}
     - target: {fileID: 6944134507680112753, guid: beda8840a69e17f45ac4188ca0e4602a, type: 3}
       propertyPath: m_Name
       value: Switch 3
@@ -949,20 +962,20 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1226480238912333109, guid: beda8840a69e17f45ac4188ca0e4602a, type: 3}
       propertyPath: lamps.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1226480238912333109, guid: beda8840a69e17f45ac4188ca0e4602a, type: 3}
       propertyPath: lamps.Array.data[0]
       value: 
-      objectReference: {fileID: 850342781}
+      objectReference: {fileID: 1007996632}
     - target: {fileID: 1226480238912333109, guid: beda8840a69e17f45ac4188ca0e4602a, type: 3}
       propertyPath: lamps.Array.data[1]
       value: 
-      objectReference: {fileID: 1193137219}
+      objectReference: {fileID: 2104591582}
     - target: {fileID: 1226480238912333109, guid: beda8840a69e17f45ac4188ca0e4602a, type: 3}
       propertyPath: lamps.Array.data[2]
       value: 
-      objectReference: {fileID: 625669453}
+      objectReference: {fileID: 408223548}
     - target: {fileID: 1226480238912333109, guid: beda8840a69e17f45ac4188ca0e4602a, type: 3}
       propertyPath: lamps.Array.data[3]
       value: 
@@ -1030,7 +1043,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1226480238912333109, guid: beda8840a69e17f45ac4188ca0e4602a, type: 3}
       propertyPath: lamps.Array.size
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1226480238912333109, guid: beda8840a69e17f45ac4188ca0e4602a, type: 3}
       propertyPath: lamps.Array.data[0]
@@ -1043,7 +1056,15 @@ PrefabInstance:
     - target: {fileID: 1226480238912333109, guid: beda8840a69e17f45ac4188ca0e4602a, type: 3}
       propertyPath: lamps.Array.data[2]
       value: 
-      objectReference: {fileID: 1563414268}
+      objectReference: {fileID: 957710531}
+    - target: {fileID: 1226480238912333109, guid: beda8840a69e17f45ac4188ca0e4602a, type: 3}
+      propertyPath: lamps.Array.data[3]
+      value: 
+      objectReference: {fileID: 625669453}
+    - target: {fileID: 1226480238912333109, guid: beda8840a69e17f45ac4188ca0e4602a, type: 3}
+      propertyPath: lamps.Array.data[4]
+      value: 
+      objectReference: {fileID: 1350069155}
     - target: {fileID: 6944134507680112753, guid: beda8840a69e17f45ac4188ca0e4602a, type: 3}
       propertyPath: m_Name
       value: Switch 4
@@ -1117,16 +1138,16 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1226480238912333109, guid: beda8840a69e17f45ac4188ca0e4602a, type: 3}
       propertyPath: lamps.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1226480238912333109, guid: beda8840a69e17f45ac4188ca0e4602a, type: 3}
       propertyPath: lamps.Array.data[0]
       value: 
-      objectReference: {fileID: 850342781}
+      objectReference: {fileID: 439197294}
     - target: {fileID: 1226480238912333109, guid: beda8840a69e17f45ac4188ca0e4602a, type: 3}
       propertyPath: lamps.Array.data[1]
       value: 
-      objectReference: {fileID: 957710531}
+      objectReference: {fileID: 302991710}
     - target: {fileID: 1226480238912333109, guid: beda8840a69e17f45ac4188ca0e4602a, type: 3}
       propertyPath: lamps.Array.data[2]
       value: 
@@ -1257,6 +1278,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 820838f4be02e3a4aa2c10753fe88ef2, type: 3}
+--- !u!1 &1007996632 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5392961677774366908, guid: 820838f4be02e3a4aa2c10753fe88ef2, type: 3}
+  m_PrefabInstance: {fileID: 1007996631}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1022549908
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1652,24 +1678,24 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1226480238912333109, guid: beda8840a69e17f45ac4188ca0e4602a, type: 3}
       propertyPath: lamps.Array.size
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1226480238912333109, guid: beda8840a69e17f45ac4188ca0e4602a, type: 3}
       propertyPath: lamps.Array.data[0]
       value: 
-      objectReference: {fileID: 1395402848}
+      objectReference: {fileID: 957710531}
     - target: {fileID: 1226480238912333109, guid: beda8840a69e17f45ac4188ca0e4602a, type: 3}
       propertyPath: lamps.Array.data[1]
       value: 
-      objectReference: {fileID: 1563414268}
+      objectReference: {fileID: 625669453}
     - target: {fileID: 1226480238912333109, guid: beda8840a69e17f45ac4188ca0e4602a, type: 3}
       propertyPath: lamps.Array.data[2]
       value: 
-      objectReference: {fileID: 625669453}
+      objectReference: {fileID: 2104591582}
     - target: {fileID: 1226480238912333109, guid: beda8840a69e17f45ac4188ca0e4602a, type: 3}
       propertyPath: lamps.Array.data[3]
       value: 
-      objectReference: {fileID: 1350069155}
+      objectReference: {fileID: 408223548}
     - target: {fileID: 6944134507680112753, guid: beda8840a69e17f45ac4188ca0e4602a, type: 3}
       propertyPath: m_Name
       value: Switch 6
@@ -1820,7 +1846,7 @@ PrefabInstance:
     - target: {fileID: 1226480238912333109, guid: beda8840a69e17f45ac4188ca0e4602a, type: 3}
       propertyPath: lamps.Array.data[1]
       value: 
-      objectReference: {fileID: 1350069155}
+      objectReference: {fileID: 850342781}
     - target: {fileID: 1226480238912333109, guid: beda8840a69e17f45ac4188ca0e4602a, type: 3}
       propertyPath: lamps.Array.data[2]
       value: 
@@ -1828,7 +1854,7 @@ PrefabInstance:
     - target: {fileID: 1226480238912333109, guid: beda8840a69e17f45ac4188ca0e4602a, type: 3}
       propertyPath: lamps.Array.data[3]
       value: 
-      objectReference: {fileID: 1193137219}
+      objectReference: {fileID: 1007996632}
     - target: {fileID: 6944134507680112753, guid: beda8840a69e17f45ac4188ca0e4602a, type: 3}
       propertyPath: m_Name
       value: Switch 5
@@ -2028,3 +2054,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 820838f4be02e3a4aa2c10753fe88ef2, type: 3}
+--- !u!1 &2104591582 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5392961677774366908, guid: 820838f4be02e3a4aa2c10753fe88ef2, type: 3}
+  m_PrefabInstance: {fileID: 2104591581}
+  m_PrefabAsset: {fileID: 0}
