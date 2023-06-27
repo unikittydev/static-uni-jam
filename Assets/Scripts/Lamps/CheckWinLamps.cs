@@ -1,34 +1,25 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using Game;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
-public class CheckWinLamps : MonoBehaviour
+public class CheckWinLamps : PuzzleBase
 {
     [SerializeField]
     private GameObject[] lamps;
 
     public static CheckWinLamps instance { get; private set; }
+
     private void Awake()
     {
         instance = this;
-    }
-    private void ConsoleWin()
-    {
-        Debug.Log("Win");
     }
 
     public void CheckWin()
     {
         foreach (var item in lamps)
-        {
             if (!item.GetComponent<LampController>().CheckCondition())
-            {
-                
                 return;
-            }
-        }
-        ConsoleWin();
+        
+        onPuzzleCompleted.Invoke();
     }
 }

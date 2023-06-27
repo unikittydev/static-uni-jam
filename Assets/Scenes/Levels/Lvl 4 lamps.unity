@@ -619,12 +619,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lamps:
-  - {fileID: 0}
+  - {fileID: 1395402848}
   - {fileID: 937810984}
-  - {fileID: 850342781}
-  - {fileID: 957710531}
   - {fileID: 177317598}
   - {fileID: 439197294}
+  - {fileID: 302991710}
+  - {fileID: 1563414268}
+  - {fileID: 850342781}
+  - {fileID: 957710531}
+  - {fileID: 625669453}
+  - {fileID: 1350069155}
+  - {fileID: 1859594942}
+  - {fileID: 1193137219}
 --- !u!4 &729179592
 Transform:
   m_ObjectHideFlags: 0
