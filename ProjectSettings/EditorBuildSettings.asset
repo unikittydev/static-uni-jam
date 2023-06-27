@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/Lvl 3 lamps.unity
     guid: f3fda32b03bf1b349991d18a6f388ab8
+  - enabled: 1
+    path: Assets/Scenes/Levels/Lvl 4 lamps.unity
+    guid: 556edb48e88471440ba733d8cd58b174
   m_configObjects: {}
