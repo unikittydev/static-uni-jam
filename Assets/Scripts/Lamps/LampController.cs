@@ -11,13 +11,14 @@ public class LampController : MonoBehaviour
     [SerializeField]
     private GameObject spriteOff;
 
-    [ContextMenu("SwitchCondition")]
+    
 
     private void Start()
     {
         UpdateSprite();
     }
 
+    [ContextMenu("SwitchCondition")]
     public void SwitchCondition()
     {
         condition = !condition;
