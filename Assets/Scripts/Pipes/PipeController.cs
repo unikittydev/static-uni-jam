@@ -5,68 +5,31 @@ using UnityEngine.U2D;
 
 public class PipeController : MonoBehaviour
 {
-
+    [SerializeField]
     public bool bondUp;
+    [SerializeField]
     public bool bondDown;
+    [SerializeField]
     public bool bondLeft;
+    [SerializeField]
     public bool bondRight;
 
-    public bool condition = false;
+    [SerializeField]
+    private bool condition;
 
     [SerializeField]
     private GameObject spriteOn;
     [SerializeField]
     private GameObject spriteOff;
 
-    [ContextMenu("SwitchCondition")]
-
-    private void SwitchCondition()
+    public void SwitchCondition()
     {
         condition = !condition;
-        UpdateSprite();
+        SwitchSprite();
     }
-
-    private void UpdateSprite()
+    private void SwitchSprite()
     {
         spriteOn.SetActive(condition);
         spriteOff.SetActive(!condition);
     }
-    public bool CheckCondition()
-    {
-        return condition;
-    }
-
-    private void CheckConnection(GameObject pipe, int direction)
-    {
-        if (pipe.GetComponent<PipeController>().CheckCondition())
-        {
-            if (bondUp && pipe.GetComponent<PipeController>().bondDown && direction == 0)
-            {
-                SwitchCondition();
-                return;
-            }
-
-            if (bondRight && pipe.GetComponent<PipeController>().bondLeft && direction == 1)
-            {
-                SwitchCondition();
-                return;
-            }
-
-            if (bondDown && pipe.GetComponent<PipeController>().bondUp && direction == 2)
-            {
-                SwitchCondition();
-                return;
-            }
-
-            if (bondLeft && pipe.GetComponent<PipeController>().bondRight && direction == 3)
-            {
-                SwitchCondition();
-                return;
-            }
-
-            
-            
-        }
-    }
-
 }
