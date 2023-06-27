@@ -14,11 +14,11 @@ namespace Game
         [SerializeField] private LevelButton levelButtonPrefab;
         [SerializeField] private Transform levelListPanel;
 
-        [SerializeField]
-        private GameObject menu;
+        [SerializeField] private GameObject menu;
         [SerializeField] private WhiteNoiseCreator noiseGenerator;
         [SerializeField] private ImageFader screenOverlay;
-        
+        [SerializeField] private VHSOverlay vhsOverlay;
+            
         private void Start()
         {
             AddLevelButtons();
@@ -36,24 +36,27 @@ namespace Game
 
                 LevelButton levelButton = Instantiate(levelButtonPrefab, levelListPanel);
                 levelButton.text.text = string.Format(LEVEL_NAME_FORMAT, level);
-                levelButton.button.onClick.AddListener(() => LoadLevelAdditive(level));
+                levelButton.button.onClick.AddListener(() => LoadLevelAdditive(level, levelButton.text.text));
             }
         }
 
-        public void LoadLevelAdditive(int index)
+        public void LoadLevelAdditive(int index, string levelName)
         {
-            StartCoroutine(LoadLevelAdditiveCoroutine(index));
+            StartCoroutine(LoadLevelAdditiveCoroutine(index, levelName));
         }
 
-        private IEnumerator LoadLevelAdditiveCoroutine(int index)
+        private IEnumerator LoadLevelAdditiveCoroutine(int index, string levelName)
         {
             AsyncOperation sceneLoad = SceneManager.LoadSceneAsync(index, LoadSceneMode.Additive);
             sceneLoad.allowSceneActivation = false;
-
+            
+            vhsOverlay.Play(levelName, LevelState.Play);
+            menu.SetActive(false);
+            
             noiseGenerator.enabled = true;
             yield return StartCoroutine(screenOverlay.SetFade(true));
-            noiseGenerator.enabled = false;
-            menu.SetActive(false);
+            
+            vhsOverlay.Stop();
 
             while (sceneLoad.progress < 0.9f)
                 yield return null;
@@ -61,6 +64,7 @@ namespace Game
             sceneLoad.allowSceneActivation = true;
             
             yield return StartCoroutine(screenOverlay.SetFade(false));
+            noiseGenerator.enabled = false;
         }
     }
 }
