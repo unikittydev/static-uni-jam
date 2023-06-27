@@ -29,6 +29,7 @@ namespace Game
             UpdateState();
         }
 
+        [ContextMenu("UpdateState")]
         private void UpdateState()
         {
             if (!positive || !neutral || !negative)

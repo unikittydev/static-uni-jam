@@ -142,6 +142,7 @@ namespace Game
             
             noiseGenerator.enabled = true;
             yield return StartCoroutine(screenOverlay.SetFade(true));
+            yield return new WaitForSecondsRealtime(3f);
             
             vhsOverlay.Stop();
 
@@ -162,6 +163,7 @@ namespace Game
             yield return StartCoroutine(screenOverlay.SetFade(true));
             
             AsyncOperation sceneUnload = SceneManager.UnloadSceneAsync(currentLevelIndex);
+            yield return new WaitForSecondsRealtime(3f);
             vhsOverlay.Stop();
             
             while (!sceneUnload.isDone)
