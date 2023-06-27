@@ -699,6 +699,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16e1aeb5b9905c546be258865f99863b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onPuzzleCompleted:
+    m_PersistentCalls:
+      m_Calls: []
+  onPuzzleBroke:
+    m_PersistentCalls:
+      m_Calls: []
   lamps:
   - {fileID: 1395402848}
   - {fileID: 937810984}
