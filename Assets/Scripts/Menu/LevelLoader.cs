@@ -55,8 +55,11 @@ namespace Game
 
         public void CompleteLevel()
         {
-            progress.completedLevels.Add(currentLevelIndex);
-            PlayerPrefs.SetString(PROGRESS_DATA, JsonUtility.ToJson(progress));
+            if (!progress.completedLevels.Contains(currentLevelIndex))
+            {
+                progress.completedLevels.Add(currentLevelIndex);
+                PlayerPrefs.SetString(PROGRESS_DATA, JsonUtility.ToJson(progress));
+            }
 
             foreach (Transform children in levelListPanel)
                 Destroy(children.gameObject);
