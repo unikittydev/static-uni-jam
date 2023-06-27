@@ -27,6 +27,7 @@ public class LampController : MonoBehaviour
 
     private void UpdateSprite()
     {
+        Debug.Log(spriteOn, this);
         spriteOn.SetActive(condition);
         spriteOff.SetActive(!condition);
     }
