@@ -2977,7 +2977,7 @@ MonoBehaviour:
   screenOverlay: {fileID: 1198004161}
   vhsOverlay: {fileID: 44100581}
   resetProgressOnLoad: 1
-  unlockLevels: 0
+  unlockLevels: 1
 --- !u!1001 &1675206106
 PrefabInstance:
   m_ObjectHideFlags: 0

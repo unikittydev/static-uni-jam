@@ -346,7 +346,7 @@ MonoBehaviour:
   onPuzzleBroke:
     m_PersistentCalls:
       m_Calls: []
-  forceFactor: 400
+  forceFactor: 2000
   charges:
   - {fileID: 1611952373}
   - {fileID: 1559022496}
