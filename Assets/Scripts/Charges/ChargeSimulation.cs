@@ -7,6 +7,14 @@ namespace Game
         [SerializeField] private float forceFactor;
 
         [SerializeField] private Charge[] charges;
+        [SerializeField] private ChargeTrigger[] triggers;
+        
+        public static ChargeSimulation Instance { get; private set; }
+        
+        private void Awake()
+        {
+            Instance = this;
+        }
 
         private void FixedUpdate()
         {
@@ -25,6 +33,17 @@ namespace Game
                 charges[i].rb.AddForce(direction * force, ForceMode2D.Force);
                 charges[j].rb.AddForce(-direction * force, ForceMode2D.Force);
             }
+        }
+        
+        public void CheckWin()
+        {
+            foreach (ChargeTrigger trigger in triggers)
+                if (!trigger.activated)
+                {
+                    CancelWin();
+                    return;
+                } 
+            TryWin();
         }
     }
 }

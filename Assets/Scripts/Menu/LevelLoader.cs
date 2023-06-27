@@ -156,13 +156,12 @@ namespace Game
         
         private IEnumerator UnloadLevelCoroutine()
         {
-            AsyncOperation sceneUnload = SceneManager.UnloadSceneAsync(currentLevelIndex);
-            
             vhsOverlay.Play(menuName, LevelState.Stop);
             
             noiseGenerator.enabled = true;
             yield return StartCoroutine(screenOverlay.SetFade(true));
             
+            AsyncOperation sceneUnload = SceneManager.UnloadSceneAsync(currentLevelIndex);
             vhsOverlay.Stop();
             
             while (!sceneUnload.isDone)
