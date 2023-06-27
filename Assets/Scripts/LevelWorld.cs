@@ -1,11 +1,11 @@
-﻿
+﻿using UnityEngine;
+
 namespace Game
 {
-    [System.Serializable]
-    public class LevelWorld
+    public class LevelWorld : ScriptableObject
     {
-        
+        public string worldName;
         public int[] requirements;
-        public int[]
+        public int[] levelIndices;
     }
 }

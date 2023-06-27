@@ -22,6 +22,8 @@ namespace Game
         public static LevelLoader Instance { get; private set; }
 
         private int levelIndex;
+
+        public bool resetProgressOnLoad, unlockLevels;
         
         private void Awake()
         {
@@ -30,7 +32,8 @@ namespace Game
 
         private void Start()
         {
-            PlayerPrefs.SetInt(LAST_COMPLETED_LEVEL, levelIndices[0]);
+            if (resetProgressOnLoad)
+                PlayerPrefs.SetInt(LAST_COMPLETED_LEVEL, levelIndices[0]);
             AddLevelButtons();
         }
         
@@ -58,7 +61,7 @@ namespace Game
             for (int i = 0; i < levelIndices.Length; i++)
             {
                 int level = levelIndices[i];
-                if (level > lastLevel)
+                if (!unlockLevels && level > lastLevel)
                     return;
 
                 LevelButton levelButton = Instantiate(levelButtonPrefab, levelListPanel);
