@@ -18,21 +18,48 @@ namespace Game
         [SerializeField] private WhiteNoiseCreator noiseGenerator;
         [SerializeField] private ImageFader screenOverlay;
         [SerializeField] private VHSOverlay vhsOverlay;
-            
+
+        public static LevelLoader Instance { get; private set; }
+
+        private int levelIndex;
+        
+        private void Awake()
+        {
+            Instance = this;
+        }
+
         private void Start()
         {
+            PlayerPrefs.SetInt(LAST_COMPLETED_LEVEL, levelIndices[0]);
             AddLevelButtons();
+        }
+        
+        public void LoadLevelAdditive(int index, string levelName)
+        {
+            StartCoroutine(LoadLevelAdditiveCoroutine(index, levelName, LevelState.Play));
+        }
+
+        public void CompleteLevel()
+        {
+            int lastCompletedLevel = PlayerPrefs.GetInt(LAST_COMPLETED_LEVEL, levelIndices[0]) + 1;
+            PlayerPrefs.SetInt(LAST_COMPLETED_LEVEL, Mathf.Max(lastCompletedLevel, levelIndex));
+
+            foreach (Transform children in levelListPanel)
+                Destroy(children.gameObject);
+            AddLevelButtons();
+
+            StartCoroutine(UnloadLevelCoroutine());
         }
 
         private void AddLevelButtons()
         {
             int lastLevel = PlayerPrefs.GetInt(LAST_COMPLETED_LEVEL, levelIndices[0]);
-
+            
             for (int i = 0; i < levelIndices.Length; i++)
             {
                 int level = levelIndices[i];
-                //if (level > lastLevel)
-                //    return;
+                if (level > lastLevel)
+                    return;
 
                 LevelButton levelButton = Instantiate(levelButtonPrefab, levelListPanel);
                 levelButton.text.text = string.Format(LEVEL_NAME_FORMAT, level);
@@ -40,17 +67,13 @@ namespace Game
             }
         }
 
-        public void LoadLevelAdditive(int index, string levelName)
+        private IEnumerator LoadLevelAdditiveCoroutine(int index, string levelName, LevelState levelState)
         {
-            StartCoroutine(LoadLevelAdditiveCoroutine(index, levelName));
-        }
-
-        private IEnumerator LoadLevelAdditiveCoroutine(int index, string levelName)
-        {
+            levelIndex = index;
             AsyncOperation sceneLoad = SceneManager.LoadSceneAsync(index, LoadSceneMode.Additive);
             sceneLoad.allowSceneActivation = false;
             
-            vhsOverlay.Play(levelName, LevelState.Play);
+            vhsOverlay.Play(levelName, levelState);
             menu.SetActive(false);
             
             noiseGenerator.enabled = true;
@@ -63,6 +86,25 @@ namespace Game
 
             sceneLoad.allowSceneActivation = true;
             
+            yield return StartCoroutine(screenOverlay.SetFade(false));
+            noiseGenerator.enabled = false;
+        }
+        
+        private IEnumerator UnloadLevelCoroutine()
+        {
+            AsyncOperation sceneUnload = SceneManager.UnloadSceneAsync(levelIndex);
+            
+            vhsOverlay.Play("МЕНЮ", LevelState.Stop);
+            
+            noiseGenerator.enabled = true;
+            yield return StartCoroutine(screenOverlay.SetFade(true));
+            
+            vhsOverlay.Stop();
+            
+            while (!sceneUnload.isDone)
+                yield return null;
+            
+            menu.SetActive(true);
             yield return StartCoroutine(screenOverlay.SetFade(false));
             noiseGenerator.enabled = false;
         }

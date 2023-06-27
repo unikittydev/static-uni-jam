@@ -22,13 +22,19 @@ namespace Game
             foreach (PuzzleBase part in puzzleParts)
             {
                 part.OnPuzzleCompleted.RemoveListener(IncrementCompletedCounter);
-                part.OnPuzzleCompleted.RemoveListener(DecrementCompletedCounter);
+                part.OnPuzzleBroke.RemoveListener(DecrementCompletedCounter);
             }
         }
 
         private void IncrementCompletedCounter()
         {
             partsCompleted++;
+
+            if (partsCompleted == puzzleParts.Length)
+            {
+                enabled = false;
+                LevelLoader.Instance.CompleteLevel();
+            }
         }
         
         private void DecrementCompletedCounter()

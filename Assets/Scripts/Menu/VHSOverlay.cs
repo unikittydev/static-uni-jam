@@ -35,9 +35,9 @@ namespace Game
 
         public void Stop()
         {
-            overlay.SetActive(false);
             if (animate != null)
                 StopCoroutine(animate);
+            overlay.SetActive(false);
         }
 
         private IEnumerator Animate(string stateName)
@@ -46,8 +46,9 @@ namespace Game
             int seconds = 0;
             bool symbolOn = true;
             string stateNameWOSymbol = stateName[..^1];
-            
-            while (enabled)
+
+            levelStateName.text = stateName;
+            while (overlay.activeSelf)
             {
                 if (timerCounter >= 1f)
                 {
