@@ -1,18 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SwitchController : MonoBehaviour
 {
     [SerializeField]
-    private GameObject[] lamps;
+    private LampController[] lamps;
 
+    [SerializeField]
+    private GameObject onModel, offModel;
+    
+    private bool switchEnabled;
+    
     void OnMouseDown()
     {
         foreach (var l in lamps)
-        {
-            l.GetComponent<LampController>().SwitchCondition();
-        }
+            l.SwitchCondition();
+
+        switchEnabled = !switchEnabled;
+        onModel.SetActive(switchEnabled);
+        offModel.SetActive(!switchEnabled);
+        
         CheckWinLamps.instance.CheckWin();
     }
 }
