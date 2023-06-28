@@ -390,19 +390,23 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 394290475385270350, guid: 7e188950c2e72f0458eb61ff29ea379a, type: 3}
       propertyPath: m_Name
-      value: Charge (1)
+      value: Charge 2
       objectReference: {fileID: 0}
     - target: {fileID: 597226247704902014, guid: 7e188950c2e72f0458eb61ff29ea379a, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4015327118729466807, guid: 7e188950c2e72f0458eb61ff29ea379a, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5357512237785096229, guid: 7e188950c2e72f0458eb61ff29ea379a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6390471160129644021, guid: 7e188950c2e72f0458eb61ff29ea379a, type: 3}
       propertyPath: _state
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6390471160129644021, guid: 7e188950c2e72f0458eb61ff29ea379a, type: 3}
       propertyPath: interactable
@@ -601,7 +605,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 120765909882288575, guid: a039c93f52e14ef41920e4c5d7747332, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7
+      value: -6
       objectReference: {fileID: 0}
     - target: {fileID: 120765909882288575, guid: a039c93f52e14ef41920e4c5d7747332, type: 3}
       propertyPath: m_LocalPosition.y
@@ -641,7 +645,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2042155846647975160, guid: a039c93f52e14ef41920e4c5d7747332, type: 3}
       propertyPath: m_Name
-      value: Trigger (1)
+      value: Trigger 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1020,7 +1024,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 120765909882288575, guid: a039c93f52e14ef41920e4c5d7747332, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 120765909882288575, guid: a039c93f52e14ef41920e4c5d7747332, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1060,7 +1064,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2042155846647975160, guid: a039c93f52e14ef41920e4c5d7747332, type: 3}
       propertyPath: m_Name
-      value: Trigger
+      value: Trigger 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1077,19 +1081,23 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 394290475385270350, guid: 7e188950c2e72f0458eb61ff29ea379a, type: 3}
       propertyPath: m_Name
-      value: Charge
+      value: Charge 1
       objectReference: {fileID: 0}
     - target: {fileID: 597226247704902014, guid: 7e188950c2e72f0458eb61ff29ea379a, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4015327118729466807, guid: 7e188950c2e72f0458eb61ff29ea379a, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5357512237785096229, guid: 7e188950c2e72f0458eb61ff29ea379a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6390471160129644021, guid: 7e188950c2e72f0458eb61ff29ea379a, type: 3}
       propertyPath: _state
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6390471160129644021, guid: 7e188950c2e72f0458eb61ff29ea379a, type: 3}
       propertyPath: interactable

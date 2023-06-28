@@ -349,8 +349,8 @@ MonoBehaviour:
   forceFactor: 2000
   charges:
   - {fileID: 1611952373}
-  - {fileID: 0}
   - {fileID: 536781810}
+  - {fileID: 1134084891}
   triggers:
   - {fileID: 75195778}
 --- !u!4 &255097626
@@ -387,6 +387,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1662910467290255737, guid: 13b140e76d3297c4191687171d777b34, type: 3}
+      propertyPath: _state
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1662910467290255737, guid: 13b140e76d3297c4191687171d777b34, type: 3}
       propertyPath: interactable
       value: 0
@@ -435,6 +439,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5185224203024453106, guid: 13b140e76d3297c4191687171d777b34, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5387597021128557762, guid: 13b140e76d3297c4191687171d777b34, type: 3}
       propertyPath: m_Name
       value: Coil 2
@@ -443,11 +451,26 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8648342120931157819, guid: 13b140e76d3297c4191687171d777b34, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 13b140e76d3297c4191687171d777b34, type: 3}
+--- !u!114 &1134084891 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1662910467290255737, guid: 13b140e76d3297c4191687171d777b34, type: 3}
+  m_PrefabInstance: {fileID: 1134084890}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8ee9321dcf0cea40be088e69d9830c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1215349269
 GameObject:
   m_ObjectHideFlags: 0
@@ -993,15 +1016,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4015327118729466807, guid: 7e188950c2e72f0458eb61ff29ea379a, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5357512237785096229, guid: 7e188950c2e72f0458eb61ff29ea379a, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6390471160129644021, guid: 7e188950c2e72f0458eb61ff29ea379a, type: 3}
       propertyPath: _state
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6390471160129644021, guid: 7e188950c2e72f0458eb61ff29ea379a, type: 3}
       propertyPath: interactable
