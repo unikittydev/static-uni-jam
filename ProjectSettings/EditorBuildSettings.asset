@@ -36,6 +36,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Charges Levels/Lvl 4 charges.unity
     guid: a96732162a98c0a42acdf2f300527dc3
   - enabled: 1
+    path: Assets/Scenes/Charges Levels/Lvl 5 charges.unity
+    guid: f7640e025949ba94898042e576b9a742
+  - enabled: 1
     path: Assets/Scenes/Pipes Levels/Lvl 1 pipes.unity
     guid: 0800a3741547e554b98808cbe37f6c24
   m_configObjects: {}

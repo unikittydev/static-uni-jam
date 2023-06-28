@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   worldName: "\u0417\u0430\u0440\u044F\u0434\u044B"
   requirements: 01000000
-  levelIndices: 06000000070000000800000009000000
+  levelIndices: 060000000700000008000000090000000a000000
