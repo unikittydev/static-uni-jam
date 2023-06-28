@@ -144,11 +144,11 @@ namespace Game
             yield return StartCoroutine(screenOverlay.SetFade(true));
             yield return new WaitForSecondsRealtime(3f);
             
-            vhsOverlay.Stop();
 
             while (sceneLoad.progress < 0.9f)
                 yield return null;
 
+            vhsOverlay.Stop();
             sceneLoad.allowSceneActivation = true;
             
             yield return StartCoroutine(screenOverlay.SetFade(false));
@@ -164,11 +164,11 @@ namespace Game
             
             AsyncOperation sceneUnload = SceneManager.UnloadSceneAsync(currentLevelIndex);
             yield return new WaitForSecondsRealtime(3f);
-            vhsOverlay.Stop();
             
             while (!sceneUnload.isDone)
                 yield return null;
             
+            vhsOverlay.Stop();
             menu.SetActive(true);
             yield return StartCoroutine(screenOverlay.SetFade(false));
             noiseGenerator.enabled = false;
