@@ -11,7 +11,7 @@ public class GameSettings : MonoBehaviour
     private const string musicVolumeParameter = "musicVolume";
     private const string sfxVolumeParameter = "sfxVolume";
     private const string SETTINGS_DATA = "SETTINGS_DATA";
-    private const float maxSliderValue = 15f;
+    public const float maxSliderValue = 15f;
         
     [SerializeField] private new Renderer2DData renderer;
     [SerializeField] private AudioMixerGroup musicGroup;
@@ -22,7 +22,7 @@ public class GameSettings : MonoBehaviour
     [SerializeField] private MenuToggle postFXToggle;
     
     private GameSettingsData data;
-    
+
     private void Awake()
     {
         if (PlayerPrefs.HasKey(SETTINGS_DATA))
@@ -32,21 +32,36 @@ public class GameSettings : MonoBehaviour
         }
         else
             data = new GameSettingsData();
+        ApplySettings();
+    }
 
-        musicGroup.audioMixer.SetFloat(musicVolumeParameter, maxSliderValue * GetVolumeFromSlider(data.musicVolume));
-        sfxGroup.audioMixer.SetFloat(sfxVolumeParameter, maxSliderValue * GetVolumeFromSlider(data.sfxVolume));
+    private void OnDestroy()
+    {
+        SaveData();
+        SetMusicVolume(maxSliderValue);
+        SetSFXVolume(maxSliderValue);
+        TogglePostFX(true);
+    }
+
+    [ContextMenu("Reset Settings")]
+    public void ResetSettings()
+    {
+        PlayerPrefs.DeleteKey(SETTINGS_DATA);
+        data = new GameSettingsData();
+        ApplySettings();
+    }
+
+    private void ApplySettings()
+    {
+        musicGroup.audioMixer.SetFloat(musicVolumeParameter, GetVolumeFromSlider(data.musicVolume));
+        sfxGroup.audioMixer.SetFloat(sfxVolumeParameter, GetVolumeFromSlider(data.sfxVolume));
         TogglePostFX(data.postFX);
 
         musicSlider.value = data.musicVolume;
         sfxSlider.value = data.sfxVolume;
         postFXToggle.SetValue(data.postFX);
     }
-
-    private void OnDestroy()
-    {
-        SaveData();
-    }
-
+    
     public void SaveData()
     {
         string json = JsonUtility.ToJson(data);
@@ -65,15 +80,15 @@ public class GameSettings : MonoBehaviour
 
     public void SetMusicVolume(float value)
     {
-        value = GetVolumeFromSlider(value);
         data.musicVolume = value;
+        value = GetVolumeFromSlider(value);
         musicGroup.audioMixer.SetFloat(musicVolumeParameter, value);
     }
 
     public void SetSFXVolume(float value)
     {
-        value = GetVolumeFromSlider(value);
         data.sfxVolume = value;
+        value = GetVolumeFromSlider(value);
         sfxGroup.audioMixer.SetFloat(sfxVolumeParameter, value);
     }
 

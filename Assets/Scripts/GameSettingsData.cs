@@ -5,8 +5,8 @@ namespace Game
     [Serializable]
     public class GameSettingsData
     {
-        public float sfxVolume = 1f;
-        public float musicVolume = 1f;
+        public float sfxVolume = GameSettings.maxSliderValue;
+        public float musicVolume = GameSettings.maxSliderValue;
         public bool postFX = true;
     }
 }
