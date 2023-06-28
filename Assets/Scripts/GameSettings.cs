@@ -38,9 +38,6 @@ public class GameSettings : MonoBehaviour
     private void OnDestroy()
     {
         SaveData();
-        SetMusicVolume(maxSliderValue);
-        SetSFXVolume(maxSliderValue);
-        TogglePostFX(true);
     }
 
     [ContextMenu("Reset Settings")]
