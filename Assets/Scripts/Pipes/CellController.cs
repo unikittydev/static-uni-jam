@@ -6,6 +6,7 @@ public class CellController : MonoBehaviour
 {
     private enum Types
     {
+        None,
         Angle,
         Straight,
         Three,
@@ -33,6 +34,12 @@ public class CellController : MonoBehaviour
 
     [SerializeField]
     private bool isLocked = false;
+
+    [SerializeField]
+    private bool isStart = false;
+
+    [SerializeField]
+    private bool isEnd = false;
 
     private int angle = 0;
 
@@ -66,6 +73,8 @@ public class CellController : MonoBehaviour
     [ContextMenu("Поменять ток")]
     private void SwitchCondition()
     {
+        if (isStart) return;
+
         isConnected = !isConnected;
 
         spriteOn.SetActive(isConnected);
@@ -76,6 +85,9 @@ public class CellController : MonoBehaviour
     {
         switch(currentType)
         {
+            case Types.None:
+                connections = new[] { false, false, false, false };
+                break;
             case Types.Angle:  
                 if (angle == 0)
                     connections = new[] { true, false, true, false };
@@ -106,6 +118,11 @@ public class CellController : MonoBehaviour
                 connections = new[] { true, true, true, true };
                 break;
         }
+    }
+
+    public bool CheckConnection(int dir)
+    {
+        return connections[dir];
     }
 
     private void OnMouseDown()
