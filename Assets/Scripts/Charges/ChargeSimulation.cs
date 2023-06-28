@@ -43,7 +43,7 @@ namespace Game
         {
             if (IsWinning() && countdownCheck == null)
                 countdownCheck = StartCoroutine(Countdown());
-            if (IsWinning() || countdownCheck == null) return;
+            if (!enabled || IsWinning() || countdownCheck == null) return;
             VHSOverlay.Instance.Stop();
             StopCoroutine(countdownCheck);
             countdownCheck = null;
@@ -69,9 +69,9 @@ namespace Game
                 counter -= Time.unscaledDeltaTime;
                 yield return null;
             }
-            VHSOverlay.Instance.Stop();
             VHSOverlay.Instance.ResetCountdown();
             TryWin();
+            enabled = false;
         }
     }
 }
