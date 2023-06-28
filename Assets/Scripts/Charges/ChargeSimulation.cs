@@ -1,16 +1,20 @@
+using System.Collections;
 using UnityEngine;
 
 namespace Game
 {
     public class ChargeSimulation : PuzzleBase
     {
+        [SerializeField] private float winCountdown;
         [SerializeField] private float forceFactor;
 
         [SerializeField] private Charge[] charges;
         [SerializeField] private ChargeTrigger[] triggers;
         
         public static ChargeSimulation Instance { get; private set; }
-        
+
+        private Coroutine countdownCheck;
+
         private void Awake()
         {
             Instance = this;
@@ -37,12 +41,36 @@ namespace Game
         
         public void CheckWin()
         {
+            if (IsWinning() && countdownCheck == null)
+                countdownCheck = StartCoroutine(Countdown());
+            if (IsWinning() || countdownCheck == null) return;
+            VHSOverlay.Instance.Stop();
+            StopCoroutine(countdownCheck);
+            countdownCheck = null;
+            CancelWin();
+        }
+
+        private bool IsWinning()
+        {
             foreach (ChargeTrigger trigger in triggers)
                 if (!trigger.activated)
-                {
-                    CancelWin();
-                    return;
-                } 
+                    return false;
+            return true;
+        }
+        
+        private IEnumerator Countdown()
+        {
+            float counter = winCountdown;
+
+            VHSOverlay.Instance.ShowCountdown();
+            while (counter > 0)
+            {
+                VHSOverlay.Instance.UpdateCountdown(counter);
+                counter -= Time.unscaledDeltaTime;
+                yield return null;
+            }
+            VHSOverlay.Instance.Stop();
+            VHSOverlay.Instance.ResetCountdown();
             TryWin();
         }
     }

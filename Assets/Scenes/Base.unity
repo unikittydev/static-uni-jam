@@ -155,6 +155,7 @@ MonoBehaviour:
   levelName: {fileID: 116873144}
   levelStateName: {fileID: 1464225973}
   timer: {fileID: 2114527291}
+  countdown: {fileID: 1217683275}
   overlay: {fileID: 1542474417}
   symbolFlickerRate: 1
 --- !u!4 &44100582
@@ -1647,7 +1648,7 @@ GameObject:
   - component: {fileID: 1217683276}
   - component: {fileID: 1217683275}
   m_Layer: 5
-  m_Name: Text (TMP) (1)
+  m_Name: Countdown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

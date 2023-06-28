@@ -808,6 +808,7 @@ MonoBehaviour:
   onPuzzleBroke:
     m_PersistentCalls:
       m_Calls: []
+  winCountdown: 3
   forceFactor: 2000
   charges:
   - {fileID: 579873343}
