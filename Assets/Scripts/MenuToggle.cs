@@ -19,6 +19,13 @@ namespace Game
             UpdateText();
         }
 
+        public void SetValue(bool value)
+        {
+            state = value;
+            UpdateText();
+            onValueChanged?.Invoke(state);
+        }
+        
         public void Toggle()
         {
             state = !state;
