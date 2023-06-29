@@ -48,16 +48,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   connections: 01000100
-  connectedPipeUp: {fileID: 0}
-  connectedPipeRight: {fileID: 0}
-  connectedPipeDown: {fileID: 0}
-  connectedPipeLeft: {fileID: 0}
   currentType: 1
   spriteOn: {fileID: 5868452144171809138}
   spriteOff: {fileID: 9166104840177154118}
   isLocked: 0
   isStart: 0
   isEnd: 0
+  angle: 0
   isConnected: 0
 --- !u!61 &6282575996525022831
 BoxCollider2D:
@@ -177,7 +174,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -613185259, guid: 82781b40ff114c047a843261a6e616b8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 202b8ad2b7a436742bd677066999ebf0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -261,7 +258,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 50859757, guid: 8c90872061f78444c9c3738da587f4c9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 86cadc1c75bc3034f8267567a15467fe, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
