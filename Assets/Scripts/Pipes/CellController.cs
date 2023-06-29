@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace Game
 {
@@ -42,7 +43,9 @@ namespace Game
 
         private void Start()
         {
+            PrintConnections();
             SwitchConnections();
+            PrintConnections();
         }
 
 
@@ -151,6 +154,12 @@ namespace Game
         {
             Rotate();
             PipeGameController.instance.SwitchAllConditions();
+        }
+
+        public void PrintConnections()
+        {
+            Debug.Log(transform.position.x + " " + transform.position.y);
+            Debug.Log("Up:" + connections[0] + " Left:" + connections[1] + " Right:" + connections[2] + " Down:" + connections[3]);
         }
     }
 }

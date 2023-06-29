@@ -95,10 +95,13 @@ namespace Game
             }
             if (cells[x, y].ConnectUp())
             {
+
                 if (cells[x, y + 1] != null)
                 {
+                    
                     if (cells[x, y + 1].ConnectDown() && !cells[x, y + 1].isConnected)
                     {
+                        Debug.Log("Up");
                         SwitchCondition(x, y + 1);
                     }
                 }
@@ -109,8 +112,10 @@ namespace Game
             {
                 if (cells[x - 1, y] != null)
                 {
+                    
                     if (cells[x - 1, y].ConnectRight() && !cells[x - 1, y].isConnected)
                     {
+                        Debug.Log("Left");
                         SwitchCondition(x - 1, y);
                     }
                 }
@@ -121,8 +126,10 @@ namespace Game
             {
                 if (cells[x + 1, y] != null)
                 {
+                    
                     if (cells[x + 1, y].ConnectLeft() && !cells[x + 1, y].isConnected)
                     {
+                        Debug.Log("Right");
                         SwitchCondition(x + 1, y);
                     }
                 }
@@ -135,6 +142,7 @@ namespace Game
                 {
                     if (cells[x, y - 1].ConnectUp() && !cells[x, y - 1].isConnected)
                     {
+                        Debug.Log("Down");
                         SwitchCondition(x, y - 1);
                     }
                 }
