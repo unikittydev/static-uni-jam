@@ -71,7 +71,6 @@ namespace Game
             }
             VHSOverlay.Instance.ResetCountdown();
             TryWin();
-            enabled = false;
         }
     }
 }

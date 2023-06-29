@@ -1,4 +1,5 @@
 using System;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -42,11 +43,30 @@ namespace Game
             locked.SetActive(!interactable);
         }
 
-        private void OnMouseDown()
+        private void OnMouseOver()
         {
+            bool setPositive = Input.GetMouseButtonDown(0);
+            bool setNegative = Input.GetMouseButtonDown(1);
+
+            if (!setPositive && !setNegative)
+                return;
+            
             if (!interactable || EventSystem.current.IsPointerOverGameObject())
-                return; 
-            _state = (ChargeState)(((int)state + 1) % 3);
+                return;
+            
+            if (Application.isMobilePlatform)
+                _state = (ChargeState)(((int)state + 1) % 3);
+            else
+            {
+                if (setPositive)
+                {
+                    _state = _state == ChargeState.Neutral ? ChargeState.Positive : ChargeState.Neutral;
+                }
+                if (setNegative)
+                {
+                    _state = _state == ChargeState.Neutral ? ChargeState.Negative : ChargeState.Neutral;
+                }
+            }
             UpdateState();
         }
     }
