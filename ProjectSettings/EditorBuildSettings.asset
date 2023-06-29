@@ -40,5 +40,11 @@ EditorBuildSettings:
     guid: f7640e025949ba94898042e576b9a742
   - enabled: 1
     path: Assets/Scenes/Pipes Levels/Lvl 1 pipes.unity
-    guid: 0800a3741547e554b98808cbe37f6c24
+    guid: f236e140c8acdb740be409a9592ba29b
+  - enabled: 1
+    path: Assets/Scenes/Pipes Levels/Lvl 2 pipes.unity
+    guid: b551d590bb2cb444f94ab1c4c62b8c94
+  - enabled: 1
+    path: Assets/Scenes/Pipes Levels/Lvl 3 pipes.unity
+    guid: 1c6042e5e5a50c14282221e64b633606
   m_configObjects: {}
