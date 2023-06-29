@@ -35,6 +35,7 @@ namespace Game
         [SerializeField]
         public bool isEnd = false;
 
+        [SerializeField]
         private int angle = 0;
 
         private int angleChange = -90;
@@ -43,9 +44,11 @@ namespace Game
 
         private void Start()
         {
-            //PrintConnections();
+            Debug.Log(angle);
+            PrintConnections();
             SwitchConnections();
-            //PrintConnections();
+            Debug.Log(angle);
+            PrintConnections();
         }
 
 
