@@ -13,5 +13,10 @@ MonoBehaviour:
   m_Name: 1. Lamps
   m_EditorClassIdentifier: 
   worldName: "\u041B\u0430\u043C\u043F\u044B"
-  requirements: 
-  levelIndices: 0100000002000000030000000400000005000000
+  requirements: []
+  levelIndices:
+  - {fileID: 11400000, guid: b19e9802696a1d2479af7b444f6f0173, type: 2}
+  - {fileID: 11400000, guid: 42a33d08fe51ead4aacaa3e33d1aca27, type: 2}
+  - {fileID: 11400000, guid: b4901e31a949ca341b32d283d22d4e04, type: 2}
+  - {fileID: 11400000, guid: 34a1520d72fe2ef418f4851af1e2037a, type: 2}
+  - {fileID: 11400000, guid: 88c0aecba5145924cafcd201f85cf8a6, type: 2}

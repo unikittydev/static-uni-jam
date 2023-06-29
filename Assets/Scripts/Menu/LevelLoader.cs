@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -30,7 +31,7 @@ namespace Game
         public static LevelLoader Instance { get; private set; }
 
         private LevelWorld currentWorld;
-        private int currentLevelIndex;
+        private LevelData currentLevel;
 
         public bool resetProgressOnLoad, unlockLevels;
         
@@ -55,9 +56,9 @@ namespace Game
 
         public void CompleteLevel()
         {
-            if (!progress.completedLevels.Contains(currentLevelIndex))
+            if (!progress.completedLevels.Contains(currentLevel))
             {
-                progress.completedLevels.Add(currentLevelIndex);
+                progress.completedLevels.Add(currentLevel);
                 PlayerPrefs.SetString(PROGRESS_DATA, JsonUtility.ToJson(progress));
             }
 
@@ -111,39 +112,38 @@ namespace Game
             bool enumerateFlag = true;
             for (int i = 0; enumerateFlag && i < world.levelIndices.Length; i++)
             {
-                int index = world.levelIndices[i];
-                if (!unlockLevels && !progress.completedLevels.Contains(index))
+                LevelData level = world.levelIndices[i];
+                if (!unlockLevels && !progress.completedLevels.Contains(level))
                     enumerateFlag = false;
-                AddLevelButton(world, index);
+                AddLevelButton(world, level);
             }
         }
 
-        private void AddLevelButton(LevelWorld world, int level)
+        private void AddLevelButton(LevelWorld world, LevelData level)
         {
             LevelButton levelButton = Instantiate(levelButtonPrefab, levelListPanel);
-            levelButton.text.text = string.Format(LEVEL_NAME_FORMAT, world.worldName, level);
-            levelButton.button.onClick.AddListener(() => LoadLevelAdditive(world, level, levelButton.text.text));
+            levelButton.text.text = level.name;
+            levelButton.button.onClick.AddListener(() => LoadLevelAdditive(world, level));
         }
         
-        private void LoadLevelAdditive(LevelWorld world, int index, string levelName)
+        private void LoadLevelAdditive(LevelWorld world, LevelData level)
         {
-            StartCoroutine(LoadLevelAdditiveCoroutine(world, index, levelName, LevelState.Play));
+            StartCoroutine(LoadLevelAdditiveCoroutine(world, level, LevelState.Play));
         }
         
-        private IEnumerator LoadLevelAdditiveCoroutine(LevelWorld world, int index, string levelName, LevelState levelState)
+        private IEnumerator LoadLevelAdditiveCoroutine(LevelWorld world, LevelData level, LevelState levelState)
         {
             currentWorld = world;
-            currentLevelIndex = index;
-            AsyncOperation sceneLoad = SceneManager.LoadSceneAsync(index, LoadSceneMode.Additive);
+            currentLevel = level;
+            AsyncOperation sceneLoad = SceneManager.LoadSceneAsync(level.buildIndex, LoadSceneMode.Additive);
             sceneLoad.allowSceneActivation = false;
             
-            vhsOverlay.Play(levelName, levelState);
+            vhsOverlay.Play(level.name, levelState);
             menu.SetActive(false);
             
             noiseGenerator.enabled = true;
             yield return StartCoroutine(screenOverlay.SetFade(true));
             yield return new WaitForSecondsRealtime(3f);
-            
 
             while (sceneLoad.progress < 0.9f)
                 yield return null;
@@ -162,7 +162,7 @@ namespace Game
             noiseGenerator.enabled = true;
             yield return StartCoroutine(screenOverlay.SetFade(true));
             
-            AsyncOperation sceneUnload = SceneManager.UnloadSceneAsync(currentLevelIndex);
+            AsyncOperation sceneUnload = SceneManager.UnloadSceneAsync(currentLevel.buildIndex);
             yield return new WaitForSecondsRealtime(3f);
             
             while (!sceneUnload.isDone)

@@ -13,5 +13,9 @@ MonoBehaviour:
   m_Name: 2. Wires
   m_EditorClassIdentifier: 
   worldName: "\u041F\u0440\u043E\u0432\u043E\u0434\u0430"
-  requirements: 03000000
-  levelIndices: 0b0000000c0000000d000000
+  requirements:
+  - {fileID: 11400000, guid: b4901e31a949ca341b32d283d22d4e04, type: 2}
+  levelIndices:
+  - {fileID: 11400000, guid: 68682addb8af43f499cb6f40c28c9202, type: 2}
+  - {fileID: 11400000, guid: 15456f065abebb14295e357c5fb458ed, type: 2}
+  - {fileID: 11400000, guid: cf83a70094c9b2c47a6f70dfcfddb78b, type: 2}

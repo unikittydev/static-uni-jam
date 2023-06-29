@@ -5,6 +5,6 @@ namespace Game
     [System.Serializable]
     public class ProgressData
     {
-        public List<int> completedLevels = new();
+        public List<LevelData> completedLevels = new();
     }
 }
