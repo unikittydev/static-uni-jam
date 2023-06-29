@@ -13,5 +13,11 @@ MonoBehaviour:
   m_Name: 3. Charges
   m_EditorClassIdentifier: 
   worldName: "\u0417\u0430\u0440\u044F\u0434\u044B"
-  requirements: 01000000
-  levelIndices: 060000000700000008000000090000000a000000
+  requirements:
+  - {fileID: 11400000, guid: cf83a70094c9b2c47a6f70dfcfddb78b, type: 2}
+  levelIndices:
+  - {fileID: 11400000, guid: 7b940557bbe8d6946989973f820f5659, type: 2}
+  - {fileID: 11400000, guid: bf3d78a737b078a4192814d2b269aaa7, type: 2}
+  - {fileID: 11400000, guid: 9196f595ebcfe7b4a970c1bb9153374d, type: 2}
+  - {fileID: 11400000, guid: 0c1282a1c5fc8f74d9f7a14d4bb84076, type: 2}
+  - {fileID: 11400000, guid: 3c4ef404501312e468a6395f539d857a, type: 2}

@@ -7,12 +7,12 @@ namespace Game
     public class LevelWorld : ScriptableObject
     {
         public string worldName;
-        public int[] requirements;
-        public int[] levelIndices;
+        public LevelData[] requirements;
+        public LevelData[] levelIndices;
 
-        public bool IsUnlocked(List<int> completedLevels)
+        public bool IsUnlocked(List<LevelData> completedLevels)
         {
-            foreach (int level in requirements)
+            foreach (LevelData level in requirements)
                 if (!completedLevels.Contains(level))
                     return false;
 
