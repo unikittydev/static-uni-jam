@@ -43,9 +43,9 @@ namespace Game
 
         private void Start()
         {
-            PrintConnections();
+            //PrintConnections();
             SwitchConnections();
-            PrintConnections();
+            //PrintConnections();
         }
 
 
