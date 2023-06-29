@@ -148,7 +148,7 @@ namespace Game
         {
             foreach(var cell in endCells)
             {
-                if (cell.isConnected)
+                if (!cell.isConnected)
                 {
                     return;
                 }
