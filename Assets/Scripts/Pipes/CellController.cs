@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
 
 namespace Game
@@ -52,7 +53,7 @@ namespace Game
         }
 
 
-        [ContextMenu("Перевернуть")]
+        [ContextMenu("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ")]
         private void ContextRotate()
         {
             transform.Rotate(0, 0, angleChange);
@@ -69,7 +70,7 @@ namespace Game
             SwitchConnections();
         }
 
-        [ContextMenu("Поменять ток")]
+        [ContextMenu("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ")]
         public void SwitchCondition()
         {
             if (isStart) return;
@@ -155,6 +156,8 @@ namespace Game
 
         private void OnMouseDown()
         {
+            if (EventSystem.current.IsPointerOverGameObject())
+                return;
             Rotate();
             PipeGameController.instance.SwitchAllConditions();
         }

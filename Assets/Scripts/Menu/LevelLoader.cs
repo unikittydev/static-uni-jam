@@ -26,6 +26,10 @@ namespace Game
         [SerializeField] private ImageFader screenOverlay;
         [SerializeField] private VHSOverlay vhsOverlay;
 
+        [Header("Cursors")]
+        [SerializeField] private CursorData menuCursor;
+        [SerializeField] private CursorData gameCursor;
+        
         private ProgressData progress;
         
         public static LevelLoader Instance { get; private set; }
@@ -38,6 +42,7 @@ namespace Game
         private void Awake()
         {
             Instance = this;
+            Cursor.SetCursor(menuCursor.cursor, menuCursor.hotSpot, CursorMode.Auto);
         }
 
         private void Start()
@@ -133,6 +138,9 @@ namespace Game
         
         private IEnumerator LoadLevelAdditiveCoroutine(LevelWorld world, LevelData level, LevelState levelState)
         {
+            Cursor.visible = false;
+            Cursor.SetCursor(gameCursor.cursor, gameCursor.hotSpot, CursorMode.Auto);
+            
             currentWorld = world;
             currentLevel = level;
             AsyncOperation sceneLoad = SceneManager.LoadSceneAsync(level.buildIndex, LoadSceneMode.Additive);
@@ -152,11 +160,14 @@ namespace Game
             sceneLoad.allowSceneActivation = true;
             
             yield return StartCoroutine(screenOverlay.SetFade(false));
+            Cursor.visible = true;
             noiseGenerator.enabled = false;
         }
         
         private IEnumerator UnloadLevelCoroutine()
         {
+            Cursor.visible = false;
+            Cursor.SetCursor(menuCursor.cursor, menuCursor.hotSpot, CursorMode.Auto);
             vhsOverlay.Play(menuName, LevelState.Stop);
             
             noiseGenerator.enabled = true;
@@ -168,6 +179,7 @@ namespace Game
             while (!sceneUnload.isDone)
                 yield return null;
             
+            Cursor.visible = true;
             vhsOverlay.Stop();
             menu.SetActive(true);
             yield return StartCoroutine(screenOverlay.SetFade(false));
