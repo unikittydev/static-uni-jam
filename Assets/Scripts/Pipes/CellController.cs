@@ -44,11 +44,11 @@ namespace Game
 
         private void Start()
         {
-            Debug.Log(angle);
-            PrintConnections();
+            //Debug.Log(angle);
+            //PrintConnections();
             SwitchConnections();
-            Debug.Log(angle);
-            PrintConnections();
+            //Debug.Log(angle);
+            //PrintConnections();
         }
 
 

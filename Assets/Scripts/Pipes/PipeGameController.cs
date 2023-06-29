@@ -76,8 +76,8 @@ namespace Game
                 cell.SwitchCondition(false);
                 if (cell == cells[endX, endY])
                 {
-                    Debug.Log("Cancel");
-                    //CancelWin();
+                    //Debug.Log("Cancel");
+                    CancelWin();
                 }
             }
             SwitchCondition(startX, startY);
@@ -89,8 +89,8 @@ namespace Game
 
             if (x == endX && y == endY)
             {
-                //TryWin();
-                Debug.Log("Win");
+                TryWin();
+                //Debug.Log("Win");
                 return;
             }
             if (cells[x, y].ConnectUp())
@@ -101,7 +101,7 @@ namespace Game
                     
                     if (cells[x, y + 1].ConnectDown() && !cells[x, y + 1].isConnected)
                     {
-                        Debug.Log("Up");
+                        //Debug.Log("Up");
                         SwitchCondition(x, y + 1);
                     }
                 }
@@ -115,7 +115,7 @@ namespace Game
                     
                     if (cells[x - 1, y].ConnectRight() && !cells[x - 1, y].isConnected)
                     {
-                        Debug.Log("Left");
+                        //Debug.Log("Left");
                         SwitchCondition(x - 1, y);
                     }
                 }
@@ -129,7 +129,7 @@ namespace Game
                     
                     if (cells[x + 1, y].ConnectLeft() && !cells[x + 1, y].isConnected)
                     {
-                        Debug.Log("Right");
+                        //Debug.Log("Right");
                         SwitchCondition(x + 1, y);
                     }
                 }
@@ -142,7 +142,7 @@ namespace Game
                 {
                     if (cells[x, y - 1].ConnectUp() && !cells[x, y - 1].isConnected)
                     {
-                        Debug.Log("Down");
+                        //Debug.Log("Down");
                         SwitchCondition(x, y - 1);
                     }
                 }
