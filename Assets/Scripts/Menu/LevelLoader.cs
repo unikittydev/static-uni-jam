@@ -2,6 +2,7 @@ using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 namespace Game
 {
@@ -26,6 +27,7 @@ namespace Game
         [SerializeField] private ImageFader screenOverlay;
         [SerializeField] private VHSOverlay vhsOverlay;
 
+        [SerializeField] private Color completedLevelColor;
         [Header("Cursors")]
         [SerializeField] private CursorData menuCursor;
         [SerializeField] private CursorData gameCursor;
@@ -128,6 +130,13 @@ namespace Game
         {
             LevelButton levelButton = Instantiate(levelButtonPrefab, levelListPanel);
             levelButton.text.text = level.name;
+
+            if (progress.completedLevels.Contains(level))
+            {
+                ColorBlock colors = levelButton.button.colors;
+                colors.normalColor = completedLevelColor;
+                levelButton.button.colors = colors;
+            }
             levelButton.button.onClick.AddListener(() => LoadLevelAdditive(world, level));
         }
         
