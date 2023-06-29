@@ -162,7 +162,7 @@ namespace Game
             
             noiseGenerator.enabled = true;
             yield return StartCoroutine(screenOverlay.SetFade(true));
-            //yield return new WaitForSecondsRealtime(3f);
+            yield return new WaitForSecondsRealtime(1f);
 
             while (sceneLoad.progress < 0.9f)
                 yield return null;
@@ -197,7 +197,7 @@ namespace Game
 
             AsyncOperation sceneUnload = SceneManager.UnloadSceneAsync(currentLevel.buildIndex);
 
-            yield return new WaitForSecondsRealtime(3f);
+            //yield return new WaitForSecondsRealtime(3f);
             
             while (!sceneUnload.isDone)
                 yield return null;

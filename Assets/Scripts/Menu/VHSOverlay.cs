@@ -45,6 +45,7 @@ namespace Game
                 LevelState.Complete => rewindWithSymbol,
                 _ => stopWithSymbol
             };
+            levelStateName.text = currentLevelStateName;
         }
         
         public void Play(string levelName, LevelState state)
