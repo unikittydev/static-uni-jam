@@ -3419,7 +3419,7 @@ MonoBehaviour:
   menuCursor: {fileID: 11400000, guid: 44aad2d582b745946942674d418eed6a, type: 2}
   gameCursor: {fileID: 11400000, guid: 677cf9eab73485741b457810756b661b, type: 2}
   resetProgressOnLoad: 1
-  unlockLevels: 0
+  unlockLevels: 1
 --- !u!1001 &1675206106
 PrefabInstance:
   m_ObjectHideFlags: 0
