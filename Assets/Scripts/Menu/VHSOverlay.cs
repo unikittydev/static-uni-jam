@@ -10,7 +10,10 @@ namespace Game
         private const string playWithSymbol = "ВОСПР.⏵";
         private const string stopWithSymbol = "СТОП⏹";
         private const string pauseWithSymbol = "ПАУЗА⏸";
+        private const string rewindWithSymbol = "ВОСПР.⏪";
         private const string defaultCountdownText = "--:--";
+
+        private string currentLevelStateName;
         
         private const string timeFormat = @"hh\:mm\:ss";
         private const string countdownFormat = @"ss\:ff";
@@ -33,16 +36,25 @@ namespace Game
             Instance = this;
         }
 
+        public void SetLevelStateName(LevelState state)
+        {
+            currentLevelStateName = state switch
+            {
+                LevelState.Play => playWithSymbol,
+                LevelState.Pause => pauseWithSymbol,
+                LevelState.Complete => rewindWithSymbol,
+                _ => stopWithSymbol
+            };
+        }
+        
         public void Play(string levelName, LevelState state)
         {
             overlay.SetActive(true);
             foreach (Transform child in overlay.transform)
                 child.gameObject.SetActive(true);
             this.levelName.text = levelName;
-            string stateName = state == LevelState.Play
-                ? playWithSymbol
-                : state == LevelState.Pause ? pauseWithSymbol : stopWithSymbol;
-            StartCoroutine(Animate(stateName));
+            SetLevelStateName(state);
+            StartCoroutine(Animate());
         }
 
         public void ShowCountdown()
@@ -71,14 +83,13 @@ namespace Game
             overlay.SetActive(false);
         }
 
-        private IEnumerator Animate(string stateName)
+        private IEnumerator Animate()
         {
             float timerCounter = 1f, flickerCounter = symbolFlickerRate;
             int seconds = 0;
             bool symbolOn = true;
-            string stateNameWOSymbol = stateName[..^1];
 
-            levelStateName.text = stateName;
+            levelStateName.text = currentLevelStateName;
             while (overlay.activeSelf)
             {
                 if (timerCounter >= 1f)
@@ -90,7 +101,7 @@ namespace Game
 
                 if (flickerCounter >= symbolFlickerRate)
                 {
-                    levelStateName.text = symbolOn ? stateName : stateNameWOSymbol;
+                    levelStateName.text = symbolOn ? currentLevelStateName : currentLevelStateName[..^1];
                     symbolOn = !symbolOn;
                     flickerCounter -= symbolFlickerRate;
                 }

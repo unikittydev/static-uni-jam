@@ -1,8 +1,8 @@
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Video;
 
 namespace Game
 {
@@ -26,7 +26,9 @@ namespace Game
         [SerializeField] private WhiteNoiseCreator noiseGenerator;
         [SerializeField] private ImageFader screenOverlay;
         [SerializeField] private VHSOverlay vhsOverlay;
-
+        [SerializeField] private VideoPlayer videoPlayer;
+        [SerializeField] private GameObject videoOverlay;
+        
         [SerializeField] private Color completedLevelColor;
         [Header("Cursors")]
         [SerializeField] private CursorData menuCursor;
@@ -160,7 +162,7 @@ namespace Game
             
             noiseGenerator.enabled = true;
             yield return StartCoroutine(screenOverlay.SetFade(true));
-            yield return new WaitForSecondsRealtime(3f);
+            //yield return new WaitForSecondsRealtime(3f);
 
             while (sceneLoad.progress < 0.9f)
                 yield return null;
@@ -177,12 +179,24 @@ namespace Game
         {
             Cursor.visible = false;
             Cursor.SetCursor(menuCursor.cursor, menuCursor.hotSpot, CursorMode.Auto);
-            vhsOverlay.Play(menuName, LevelState.Stop);
+            vhsOverlay.Play(menuName, LevelState.Complete);
+
+            videoPlayer.clip = currentLevel.endVideo;
+            videoPlayer.time = 0f;
+            videoPlayer.Play();
+            videoOverlay.SetActive(true);
+            yield return new WaitForSecondsRealtime(3f);
+            videoPlayer.Pause();
+            vhsOverlay.SetLevelStateName(LevelState.Stop);
+            yield return new WaitForSecondsRealtime(2f);
             
             noiseGenerator.enabled = true;
             yield return StartCoroutine(screenOverlay.SetFade(true));
-            
+            videoPlayer.Stop();
+            videoOverlay.SetActive(false);
+
             AsyncOperation sceneUnload = SceneManager.UnloadSceneAsync(currentLevel.buildIndex);
+
             yield return new WaitForSecondsRealtime(3f);
             
             while (!sceneUnload.isDone)

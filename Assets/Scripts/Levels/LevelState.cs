@@ -5,6 +5,7 @@ namespace Game
     {
         Play,
         Pause,
-        Stop
+        Complete,
+        Stop,
     }
 }
