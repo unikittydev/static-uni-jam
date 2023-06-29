@@ -20,7 +20,7 @@ namespace Game
         private float offsetX = 9.5f;
 
         [SerializeField]
-        private float offsetY = -5.5f;
+        private float offsetY = 5.5f;
 
         private int startX;
         private int startY;

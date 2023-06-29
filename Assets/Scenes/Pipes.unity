@@ -1858,7 +1858,6 @@ MonoBehaviour:
   onPuzzleBroke:
     m_PersistentCalls:
       m_Calls: []
-  tilemap: {fileID: 0}
   height: 20
   width: 12
   offsetX: 9.5

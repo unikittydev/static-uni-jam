@@ -18,15 +18,6 @@ namespace Game
         private bool[] connections = { false, false, false, false };
 
         [SerializeField]
-        private GameObject connectedPipeUp;
-        [SerializeField]
-        private GameObject connectedPipeRight;
-        [SerializeField]
-        private GameObject connectedPipeDown;
-        [SerializeField]
-        private GameObject connectedPipeLeft;
-
-        [SerializeField]
         private Types currentType;
 
         [SerializeField]
