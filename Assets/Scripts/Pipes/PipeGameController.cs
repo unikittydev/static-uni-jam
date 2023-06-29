@@ -9,7 +9,6 @@ namespace Game
     {
         private CellController[,] cells;
 
-
         [SerializeField]
         private int height = 20;
 
@@ -25,8 +24,7 @@ namespace Game
         private int startX;
         private int startY;
 
-        private int endX;
-        private int endY;
+        private List<CellController> endCells = new List<CellController>();
 
         public static PipeGameController instance { get; private set; }
 
@@ -34,7 +32,6 @@ namespace Game
         {
             instance = this;
         }
-
 
         [ContextMenu("Поиск тайла")]
         void Start()
@@ -59,8 +56,7 @@ namespace Game
                 }
                 if (child.GetComponent<CellController>().isEnd)
                 {
-                    endX = Mathf.RoundToInt(child.position.x + offsetX);
-                    endY = Mathf.RoundToInt(child.position.y + offsetY);
+                    endCells.Add(child.GetComponent<CellController>());
 
                 }
                 cells[Mathf.RoundToInt(child.position.x + offsetX), Mathf.RoundToInt(child.position.y + offsetY)] = child.GetComponent<CellController>();
@@ -74,7 +70,7 @@ namespace Game
             {
                 if (cell == null) continue;
                 cell.SwitchCondition(false);
-                if (cell == cells[endX, endY])
+                if (endCells.Contains(cell))
                 {
                     //Debug.Log("Cancel");
                     CancelWin();
@@ -87,11 +83,9 @@ namespace Game
         {
             cells[x, y].SwitchCondition(true);
 
-            if (x == endX && y == endY)
+            if (endCells.Contains(cells[x, y]))
             {
-                TryWin();
-                //Debug.Log("Win");
-                return;
+                CheckWin();
             }
             if (cells[x, y].ConnectUp())
             {
@@ -148,6 +142,18 @@ namespace Game
                 }
 
             }
+        }
+
+        private void CheckWin()
+        {
+            foreach(var cell in endCells)
+            {
+                if (cell.isConnected)
+                {
+                    return;
+                }
+            }
+            TryWin();
         }
 
     }
