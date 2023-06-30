@@ -1,8 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
-using UnityEngine.UIElements;
 
 namespace Game
 {
@@ -43,6 +42,10 @@ namespace Game
 
         public bool isConnected = false;
 
+        [SerializeField] private UnityEvent onPipeRotate;
+        [SerializeField] private UnityEvent onConnect;
+        [SerializeField] private UnityEvent onDisconnect;
+        
         private void Start()
         {
             //Debug.Log(angle);
@@ -51,7 +54,6 @@ namespace Game
             //Debug.Log(angle);
             //PrintConnections();
         }
-
 
         [ContextMenu("�����������")]
         private void ContextRotate()
@@ -68,6 +70,8 @@ namespace Game
             transform.Rotate(0, 0, angleChange);
             angle = Mathf.RoundToInt(transform.eulerAngles.z);
             SwitchConnections();
+            
+            onPipeRotate?.Invoke();
         }
 
         [ContextMenu("�������� ���")]
@@ -97,7 +101,7 @@ namespace Game
             {
                 case Types.None:
                     connections = new[] { false, false, false, false };
-                    break;
+                    return;
                 case Types.Angle:
                     if (angle == 0)
                         connections = new[] { true, false, true, false };
@@ -130,8 +134,6 @@ namespace Game
             }
         }
 
-
-
         public bool CheckConnection(int dir)
         {
             return connections[dir];
@@ -158,7 +160,9 @@ namespace Game
         {
             if (EventSystem.current.IsPointerOverGameObject())
                 return;
+            
             Rotate();
+            
             PipeGameController.instance.SwitchAllConditions();
         }
 

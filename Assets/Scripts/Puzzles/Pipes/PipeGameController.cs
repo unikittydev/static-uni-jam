@@ -33,7 +33,7 @@ namespace Game
             instance = this;
         }
 
-        [ContextMenu("Поиск тайла")]
+        [ContextMenu("пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ")]
         void Start()
         {
             cells = new CellController[height, width];
@@ -89,10 +89,8 @@ namespace Game
             }
             if (cells[x, y].ConnectUp())
             {
-
                 if (cells[x, y + 1] != null)
                 {
-                    
                     if (cells[x, y + 1].ConnectDown() && !cells[x, y + 1].isConnected)
                     {
                         //Debug.Log("Up");
@@ -106,7 +104,6 @@ namespace Game
             {
                 if (cells[x - 1, y] != null)
                 {
-                    
                     if (cells[x - 1, y].ConnectRight() && !cells[x - 1, y].isConnected)
                     {
                         //Debug.Log("Left");

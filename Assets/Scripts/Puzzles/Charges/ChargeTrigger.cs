@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Game
 {
@@ -10,6 +11,9 @@ namespace Game
         private List<Charge> chargesInTrigger = new();
 
         public bool activated => chargesInTrigger.Count > 0;
+
+        [SerializeField] private UnityEvent onTriggerActivate;
+        [SerializeField] private UnityEvent onTriggerDeactivate;
         
         private void OnTriggerEnter2D(Collider2D col)
         {
@@ -32,6 +36,11 @@ namespace Game
 
         private void SetTriggerActive(bool active)
         {
+            if (active)
+                onTriggerActivate?.Invoke();
+            else
+                onTriggerDeactivate?.Invoke();
+            
             activeModel.SetActive(active);
             inactiveModel.SetActive(!active);
         }

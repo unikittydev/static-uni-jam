@@ -1,6 +1,6 @@
 using System;
-using UnityEditor;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
 namespace Game
@@ -26,6 +26,10 @@ namespace Game
         [SerializeField] private GameObject negative;
         [SerializeField] private GameObject locked;
 
+        [Space]
+        [SerializeField] private UnityEvent onBecameCharged;
+        [SerializeField] private UnityEvent onBecameNeutral;
+        
         private void Start()
         {
             UpdateState();
@@ -53,7 +57,7 @@ namespace Game
             
             if (!interactable || EventSystem.current.IsPointerOverGameObject())
                 return;
-            
+
             if (Application.isMobilePlatform)
                 _state = (ChargeState)(((int)state + 1) % 3);
             else
@@ -67,6 +71,12 @@ namespace Game
                     _state = _state == ChargeState.Neutral ? ChargeState.Negative : ChargeState.Neutral;
                 }
             }
+            
+            if (_state == ChargeState.Neutral)
+                onBecameNeutral?.Invoke();
+            else
+                onBecameCharged?.Invoke();
+            
             UpdateState();
         }
     }
