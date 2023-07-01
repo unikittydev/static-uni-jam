@@ -239,6 +239,7 @@ namespace Game
         {
             Time.timeScale = 0f;
             
+            pause.enabled = false;
             Cursor.visible = false;
             Cursor.SetCursor(menuCursor.cursor, menuCursor.hotSpot, CursorMode.Auto);
             vhsOverlay.Play(currentLevel.name, LevelState.Restart);
@@ -263,6 +264,7 @@ namespace Game
             Cursor.visible = true;
             noiseGenerator.enabled = false;
 
+            pause.enabled = true;
             Time.timeScale = 1f;
         }
     }
