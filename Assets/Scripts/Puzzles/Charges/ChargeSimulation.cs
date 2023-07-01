@@ -66,7 +66,7 @@ namespace Game
             while (counter > 0)
             {
                 VHSOverlay.Instance.UpdateCountdown(counter);
-                counter -= Time.unscaledDeltaTime;
+                counter -= Time.deltaTime;
                 yield return null;
             }
             VHSOverlay.Instance.ResetCountdown();

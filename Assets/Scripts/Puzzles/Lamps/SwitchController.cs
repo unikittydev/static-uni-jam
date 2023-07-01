@@ -1,3 +1,4 @@
+using Game;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
@@ -17,7 +18,7 @@ public class SwitchController : MonoBehaviour
     
     void OnMouseDown()
     {
-        if (EventSystem.current.IsPointerOverGameObject())
+        if (GamePause.GamePaused || EventSystem.current.IsPointerOverGameObject())
             return;
         
         foreach (var l in lamps)

@@ -10,7 +10,8 @@ namespace Game
         private const string playWithSymbol = "ВОСПР.⏵";
         private const string stopWithSymbol = "СТОП⏹";
         private const string pauseWithSymbol = "ПАУЗА⏸";
-        private const string rewindWithSymbol = "ВОСПР.⏪";
+        private const string rewindWithSymbol = "ПОБЕДА⏵";
+        private const string restartWithSymbol = "РЕСТАРТ⏪";
         private const string defaultCountdownText = "--:--";
 
         private string currentLevelStateName;
@@ -43,6 +44,7 @@ namespace Game
                 LevelState.Play => playWithSymbol,
                 LevelState.Pause => pauseWithSymbol,
                 LevelState.Complete => rewindWithSymbol,
+                LevelState.Restart => restartWithSymbol,
                 _ => stopWithSymbol
             };
             levelStateName.text = currentLevelStateName;

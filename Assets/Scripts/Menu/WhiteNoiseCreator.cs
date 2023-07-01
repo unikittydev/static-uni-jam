@@ -57,7 +57,7 @@ namespace Game
 
         private void Update()
         {
-            delayCounter += Time.deltaTime;
+            delayCounter += Time.unscaledDeltaTime;
             if (delayCounter <= delayTime)
                 return;
             delayCounter -= delayTime;

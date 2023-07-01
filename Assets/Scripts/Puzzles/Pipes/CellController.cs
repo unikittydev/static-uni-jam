@@ -158,7 +158,7 @@ namespace Game
 
         private void OnMouseDown()
         {
-            if (EventSystem.current.IsPointerOverGameObject())
+            if (GamePause.GamePaused || EventSystem.current.IsPointerOverGameObject())
                 return;
             
             Rotate();

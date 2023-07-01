@@ -28,6 +28,7 @@ namespace Game
         [SerializeField] private VHSOverlay vhsOverlay;
         [SerializeField] private VideoPlayer videoPlayer;
         [SerializeField] private GameObject videoOverlay;
+        [SerializeField] private GamePause pause;
         
         [SerializeField] private Color completedLevelColor;
         [Header("Cursors")]
@@ -63,14 +64,8 @@ namespace Game
                 progress = new ProgressData();
         }
 
-        public void CompleteLevel()
+        public void QuitLevel(bool showVideo)
         {
-            if (!progress.completedLevels.Contains(currentLevel))
-            {
-                progress.completedLevels.Add(currentLevel);
-                PlayerPrefs.SetString(PROGRESS_DATA, JsonUtility.ToJson(progress));
-            }
-
             foreach (Transform children in levelListPanel)
                 Destroy(children.gameObject);
             
@@ -78,9 +73,24 @@ namespace Game
             AddWorldButtons();
             AddLevelButtons(currentWorld);
 
-            StartCoroutine(UnloadLevelCoroutine());
+            StartCoroutine(UnloadLevelCoroutine(showVideo));
+        }
+        
+        public void CompleteLevel()
+        {
+            if (!progress.completedLevels.Contains(currentLevel))
+            {
+                progress.completedLevels.Add(currentLevel);
+                PlayerPrefs.SetString(PROGRESS_DATA, JsonUtility.ToJson(progress));
+            }
+            QuitLevel(true);
         }
 
+        public void RestartLevel()
+        {
+            StartCoroutine(RestartLevelCoroutine());
+        }
+        
         private void AddWorldButtons()
         {
             ClearWorldButtons();
@@ -173,27 +183,41 @@ namespace Game
             yield return StartCoroutine(screenOverlay.SetFade(false));
             Cursor.visible = true;
             noiseGenerator.enabled = false;
+            pause.enabled = true;
         }
         
-        private IEnumerator UnloadLevelCoroutine()
+        private IEnumerator UnloadLevelCoroutine(bool showVideo)
         {
+            Time.timeScale = 0f;
+
+            pause.enabled = false;
             Cursor.visible = false;
             Cursor.SetCursor(menuCursor.cursor, menuCursor.hotSpot, CursorMode.Auto);
-            vhsOverlay.Play(menuName, LevelState.Complete);
 
-            videoPlayer.clip = currentLevel.endVideo;
-            videoPlayer.time = 0f;
-            videoPlayer.Play();
-            videoOverlay.SetActive(true);
-            yield return new WaitForSecondsRealtime(3f);
-            videoPlayer.Pause();
-            vhsOverlay.SetLevelStateName(LevelState.Stop);
-            yield return new WaitForSecondsRealtime(2f);
-            
+            if (showVideo)
+            {
+                vhsOverlay.Play(menuName, LevelState.Complete);
+                videoPlayer.clip = currentLevel.endVideo;
+                videoPlayer.time = 0f;
+                videoPlayer.Play();
+                videoOverlay.SetActive(true);
+                yield return new WaitForSecondsRealtime(3f);
+                videoPlayer.Pause();
+
+                vhsOverlay.SetLevelStateName(LevelState.Stop);
+                yield return new WaitForSecondsRealtime(2f);
+            }
+            else
+                vhsOverlay.Play(menuName, LevelState.Stop);
+
             noiseGenerator.enabled = true;
             yield return StartCoroutine(screenOverlay.SetFade(true));
-            videoPlayer.Stop();
-            videoOverlay.SetActive(false);
+
+            if (showVideo)
+            {
+                videoPlayer.Stop();
+                videoOverlay.SetActive(false);
+            }
 
             AsyncOperation sceneUnload = SceneManager.UnloadSceneAsync(currentLevel.buildIndex);
 
@@ -207,6 +231,39 @@ namespace Game
             menu.SetActive(true);
             yield return StartCoroutine(screenOverlay.SetFade(false));
             noiseGenerator.enabled = false;
+
+            Time.timeScale = 1f;
+        }
+
+        private IEnumerator RestartLevelCoroutine()
+        {
+            Time.timeScale = 0f;
+            
+            Cursor.visible = false;
+            Cursor.SetCursor(menuCursor.cursor, menuCursor.hotSpot, CursorMode.Auto);
+            vhsOverlay.Play(currentLevel.name, LevelState.Restart);
+            
+            noiseGenerator.enabled = true;
+            yield return StartCoroutine(screenOverlay.SetFade(true));
+            
+            AsyncOperation sceneUnload = SceneManager.UnloadSceneAsync(currentLevel.buildIndex);
+            
+            while (!sceneUnload.isDone)
+                yield return null;
+            
+            AsyncOperation sceneLoad = SceneManager.LoadSceneAsync(currentLevel.buildIndex, LoadSceneMode.Additive);
+            vhsOverlay.SetLevelStateName(LevelState.Play);
+            
+            while (!sceneLoad.isDone)
+                yield return null;
+            
+            vhsOverlay.Stop();
+            
+            yield return StartCoroutine(screenOverlay.SetFade(false));
+            Cursor.visible = true;
+            noiseGenerator.enabled = false;
+
+            Time.timeScale = 1f;
         }
     }
 }

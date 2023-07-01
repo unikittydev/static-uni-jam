@@ -7,5 +7,6 @@ namespace Game
         Pause,
         Complete,
         Stop,
+        Restart
     }
 }

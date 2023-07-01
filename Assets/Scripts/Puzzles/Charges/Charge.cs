@@ -49,13 +49,13 @@ namespace Game
 
         private void OnMouseOver()
         {
+            if (GamePause.GamePaused || !interactable || EventSystem.current.IsPointerOverGameObject())
+                return;
+            
             bool setPositive = Input.GetMouseButtonDown(0);
             bool setNegative = Input.GetMouseButtonDown(1);
 
             if (!setPositive && !setNegative)
-                return;
-            
-            if (!interactable || EventSystem.current.IsPointerOverGameObject())
                 return;
 
             if (Application.isMobilePlatform)
