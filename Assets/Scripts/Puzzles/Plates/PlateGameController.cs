@@ -118,7 +118,6 @@ namespace Game
             }
             
             AddDirections();
-
             CancelWin();
         }
 
@@ -156,8 +155,8 @@ namespace Game
                     }
                 }
             }
-            //TryWin();
-            Debug.Log("Win");
+            TryWin();
+            //Debug.Log("Win");
         }
 
         
