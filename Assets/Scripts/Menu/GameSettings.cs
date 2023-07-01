@@ -54,8 +54,8 @@ public class GameSettings : MonoBehaviour
         sfxGroup.audioMixer.SetFloat(sfxVolumeParameter, GetVolumeFromSlider(data.sfxVolume));
         TogglePostFX(data.postFX);
 
-        musicSlider.value = data.musicVolume;
-        sfxSlider.value = data.sfxVolume;
+        musicSlider.SetValueWithoutNotify(data.musicVolume);
+        sfxSlider.SetValueWithoutNotify(data.sfxVolume);
         postFXToggle.SetValue(data.postFX);
     }
     
