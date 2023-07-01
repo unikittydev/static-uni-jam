@@ -200,6 +200,7 @@ namespace Game
                 videoPlayer.clip = currentLevel.endVideo;
                 videoPlayer.time = 0f;
                 videoPlayer.Play();
+                yield return null;
                 videoOverlay.SetActive(true);
                 yield return new WaitForSecondsRealtime(3f);
                 videoPlayer.Pause();
