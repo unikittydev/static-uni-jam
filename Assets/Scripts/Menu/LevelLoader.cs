@@ -189,7 +189,9 @@ namespace Game
             if (currentWorld.tutorial)
             {
                 tutorial.SetTutorialInfo(currentWorld.tutorial);
-                tutorial.Show();
+                
+                if (tutorial.IsFirstLoad())
+                    tutorial.Show();
             }
         }
         

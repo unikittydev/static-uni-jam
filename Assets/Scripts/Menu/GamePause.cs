@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Game
@@ -9,11 +10,22 @@ namespace Game
         [SerializeField] private GameObject pausePanel;
         [SerializeField] private GameObject levelPanel;
         [SerializeField] private GameObject menu;
-
+        [SerializeField] private GameObject pauseButtons;
+        
         private static bool gamePaused;
 
         public static bool GamePaused => gamePaused;
-        
+
+        private void OnEnable()
+        {
+            pauseButtons.SetActive(true);
+        }
+
+        private void OnDisable()
+        {
+            pauseButtons.SetActive(false);
+        }
+
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.Escape))
@@ -34,6 +46,7 @@ namespace Game
             Time.timeScale = 1f;
             vhsOverlay.Stop();
             menu.SetActive(false);
+            pauseButtons.SetActive(true);
             levelPanel.SetActive(true);
             pausePanel.SetActive(false);
         }
@@ -54,6 +67,7 @@ namespace Game
             vhsOverlay.Play(string.Empty, LevelState.Pause);
             
             menu.SetActive(true);
+            pauseButtons.SetActive(false);
             levelPanel.SetActive(false);
             pausePanel.SetActive(true);
         }
