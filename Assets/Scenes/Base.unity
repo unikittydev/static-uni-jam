@@ -2132,7 +2132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2e8dce0a6414d044898b31b5619cd5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  afkTime: 2
+  afkTime: 5
   onAFKStart:
     m_PersistentCalls:
       m_Calls:
@@ -5058,9 +5058,9 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 97783054}
-  - {fileID: 655415438}
   - {fileID: 1776965826}
   - {fileID: 767634270}
+  - {fileID: 655415438}
   - {fileID: 1807150124}
   - {fileID: 1542474418}
   m_Father: {fileID: 1951676665}
