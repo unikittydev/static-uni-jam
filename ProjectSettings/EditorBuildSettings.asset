@@ -53,4 +53,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Pipes Levels/Lvl 5 pipes.unity
     guid: 0367e9aa7179f1943abf7c54b5df27d0
+  - enabled: 1
+    path: Assets/Scenes/Plates Levels/Lvl 1 plates.unity
+    guid: 379f8015e62b63441b6e4171b9d70376
   m_configObjects: {}

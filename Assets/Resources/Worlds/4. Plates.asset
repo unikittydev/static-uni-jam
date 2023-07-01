@@ -10,8 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 17e491e16aa34ce2bd492eb5ac87c167, type: 3}
-  m_Name: 4. Complex 1
+  m_Name: 4. Plates
   m_EditorClassIdentifier: 
-  worldName: "\u0421\u043B\u043E\u0436\u043D\u043E\u0435 1"
-  requirements: 04000000
-  levelIndices: 
+  worldName: "\u041F\u043B\u0438\u0442\u044B"
+  requirements:
+  - {fileID: 11400000, guid: 9196f595ebcfe7b4a970c1bb9153374d, type: 2}
+  levelIndices:
+  - {fileID: 11400000, guid: caab99d5f8cccdb4ba04858fe4fc1bec, type: 2}
