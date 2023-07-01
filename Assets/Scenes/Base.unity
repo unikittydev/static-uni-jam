@@ -4211,6 +4211,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 60eea70beea85d2479e97f9993149b72, type: 2}
   - {fileID: 11400000, guid: 426e7af306ad9294e94536ff6cbffb8b, type: 2}
   - {fileID: 11400000, guid: bb2003430a85f81458ec32ad37dff0ae, type: 2}
+  - {fileID: 11400000, guid: 740b7ebd8d12fda46838a84879e6f264, type: 2}
+  - {fileID: 11400000, guid: e470d922bf55a4945896a009aa63c3e4, type: 2}
   levelButtonPrefab: {fileID: 3344483558849025958, guid: dba80e2be5e13de40a437c376acdfa85, type: 3}
   separatorPrefab: {fileID: 7714189215501159305, guid: 4f0f42c0c0ffbcc4c8fc656570253ab4, type: 3}
   worldListPanel: {fileID: 1248890251}
