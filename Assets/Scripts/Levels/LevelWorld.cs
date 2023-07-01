@@ -9,7 +9,8 @@ namespace Game
         public string worldName;
         public LevelData[] requirements;
         public LevelData[] levelIndices;
-
+        public TutorialInfo tutorial;
+        
         public bool IsUnlocked(List<LevelData> completedLevels)
         {
             foreach (LevelData level in requirements)
