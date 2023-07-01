@@ -17,6 +17,8 @@ namespace Game
         
         private void Update()
         {
+            if (oldMousePosition != Input.mousePosition)
+                afkCounter = 0f;
             if (afk)
             {
                 if (oldMousePosition == Input.mousePosition) return;
@@ -25,7 +27,6 @@ namespace Game
                 return;
             }
             
-
             if (afkCounter > afkTime)
             {
                 afk = true;
