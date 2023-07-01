@@ -2132,7 +2132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2e8dce0a6414d044898b31b5619cd5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  afkTime: 30
+  afkTime: 20
   onAFKStart:
     m_PersistentCalls:
       m_Calls:
