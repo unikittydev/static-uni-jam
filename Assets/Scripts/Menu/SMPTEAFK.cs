@@ -25,7 +25,6 @@ namespace Game
                 return;
             }
             
-            afkCounter += Time.unscaledDeltaTime;
 
             if (afkCounter > afkTime)
             {
@@ -34,6 +33,7 @@ namespace Game
                 onAFKStart?.Invoke();
             }
 
+            afkCounter += Time.unscaledDeltaTime;
             oldMousePosition = Input.mousePosition;
         }
     }
