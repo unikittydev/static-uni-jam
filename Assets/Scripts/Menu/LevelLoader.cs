@@ -242,7 +242,6 @@ namespace Game
             
             pause.enabled = false;
             Cursor.visible = false;
-            Cursor.SetCursor(menuCursor.cursor, menuCursor.hotSpot, CursorMode.Auto);
             vhsOverlay.Play(currentLevel.name, LevelState.Restart);
             
             noiseGenerator.enabled = true;
