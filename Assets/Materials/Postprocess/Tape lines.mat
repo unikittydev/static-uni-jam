@@ -46,7 +46,7 @@ Material:
     - _Stripe_Size: 85.2
     - _Stripe_Speed: -0.46
     - _Stripe_Strength: 4
-    - _UnscaledTime: 11.504814
+    - _UnscaledTime: 0
     m_Colors:
     - _Stripe_Size: {r: 0, g: 0, b: 0, a: 0}
     - _Stripe_Stretch: {r: 23.36, g: 128.1, b: 0, a: 0}
