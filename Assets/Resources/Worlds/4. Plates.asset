@@ -17,3 +17,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9196f595ebcfe7b4a970c1bb9153374d, type: 2}
   levelIndices:
   - {fileID: 11400000, guid: caab99d5f8cccdb4ba04858fe4fc1bec, type: 2}
+  - {fileID: 11400000, guid: 3c3c52ac74951914db1139f8abbefc38, type: 2}
