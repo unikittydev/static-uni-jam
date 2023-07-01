@@ -43,6 +43,7 @@ namespace Game
             gamePaused = false;
             levelLoader.RestartLevel();
             menu.SetActive(false);
+            levelPanel.SetActive(true);
             pausePanel.SetActive(false);
         }
         
@@ -51,6 +52,7 @@ namespace Game
             gamePaused = true;
             Time.timeScale = 0f;
             vhsOverlay.Play(string.Empty, LevelState.Pause);
+            
             menu.SetActive(true);
             levelPanel.SetActive(false);
             pausePanel.SetActive(true);
@@ -58,11 +60,12 @@ namespace Game
 
         public void QuitLevel()
         {
-            gamePaused = false;
-            pausePanel.SetActive(false);
-            levelPanel.SetActive(true);
-            menu.SetActive(false);
             levelLoader.QuitLevel(false);
+            gamePaused = false;
+            
+            menu.SetActive(false);
+            levelPanel.SetActive(true);
+            pausePanel.SetActive(false);
         }
     }
 }
