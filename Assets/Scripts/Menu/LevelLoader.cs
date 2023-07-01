@@ -29,6 +29,7 @@ namespace Game
         [SerializeField] private VideoPlayer videoPlayer;
         [SerializeField] private GameObject videoOverlay;
         [SerializeField] private GamePause pause;
+        [SerializeField] private TutorialController tutorial;
         
         [SerializeField] private Color completedLevelColor;
         [Header("Cursors")]
@@ -184,6 +185,14 @@ namespace Game
             Cursor.visible = true;
             noiseGenerator.enabled = false;
             pause.enabled = true;
+
+            if (currentWorld.tutorial)
+            {
+                tutorial.SetTutorialInfo(currentWorld.tutorial);
+                
+                if (tutorial.IsFirstLoad())
+                    tutorial.Show();
+            }
         }
         
         private IEnumerator UnloadLevelCoroutine(bool showVideo)
