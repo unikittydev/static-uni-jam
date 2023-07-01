@@ -49,17 +49,14 @@ namespace Game
         [ContextMenu("Вектор")]
         private void Start()
         {
-            transform.GetChild(0).gameObject.SetActive(true);
-            transform.GetChild(1).gameObject.SetActive(true);
-
-            Debug.Log(Vector3.Project(PointCharge - PointFirst, PointSecond - PointFirst) + PointFirst);
+            line.gameObject.SetActive(true);
+            charge.gameObject.SetActive(true);
 
             firstPoint.transform.position += new Vector3(0, 0, -2);
             secondPoint.transform.position += new Vector3(0, 0, -2);
             pointFirst = firstPoint.transform.position;
             pointSecond = secondPoint.transform.position;
 
-            line = transform.GetChild(1).GetComponent<LineRenderer>();
             line.positionCount = 2;
             line.SetPosition(0, PointFirst + new Vector3(0, 0, 2));
             line.SetPosition(1, PointSecond + new Vector3(0, 0, 2));
@@ -71,6 +68,8 @@ namespace Game
         public void ChangePositions()
         {
             PointMouse = Camera.main.ScreenToWorldPoint(Input.mousePosition + new Vector3(0, 0, 10));
+
+            Vector3 oldPos = charge.transform.position;
 
             if (Mathf.Pow(Vector3.Distance(PointFirst, PointMouse), 2) >= Mathf.Pow(Vector3.Distance(PointFirst, PointSecond), 2) + Mathf.Pow(Vector3.Distance(PointMouse, PointSecond), 2)){
                 PointCharge = PointSecond;
@@ -84,8 +83,33 @@ namespace Game
                 PointCharge = Vector3.Project(PointMouse - PointFirst, PointSecond - PointFirst) + PointFirst;
             }
             //charge.transform.position = PointCharge;
-            
-            charge.Rb.MovePosition(PointCharge);
+
+            //charge.Rb.MovePosition(PointCharge);
+
+            Collider2D[] circels = Physics2D.OverlapCircleAll(PointCharge, charge.gameObject.GetComponent<CircleCollider2D>().radius);
+
+            if (circels.Length < 2)
+            {
+                if (circels.Length == 0 || charge.gameObject == circels[0].gameObject)
+                {
+                    Debug.Log("Нет объекта");
+                    //Debug.Log(oldPos);
+                    //Debug.Log(charge.transform.position);
+                    //Debug.Log(Vector3.Project(charge.transform.position - PointFirst, PointSecond - PointFirst) + PointFirst);
+                    //charge.Rb.MovePosition(PointCharge);
+                    charge.transform.position = PointCharge;
+                }
+                
+            }
+            else
+            {
+                Debug.Log("Есть объект");
+            }
+
+            //if (charge.transform.position != PointCharge)
+            //{
+            //    charge.transform.position = oldPos;
+            //}
         }
     }
 }

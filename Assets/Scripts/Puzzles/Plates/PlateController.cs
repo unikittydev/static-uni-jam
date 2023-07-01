@@ -15,6 +15,15 @@ namespace Game
         }
 
         [SerializeField]
+        private Color emptyColor;
+        [SerializeField] 
+        private Color lightColor;
+        [SerializeField] 
+        private Color wallColor;
+        [SerializeField] 
+        private Color directionColor;
+
+        [SerializeField]
         private Types currentType = Types.Empty;
 
         public Types CurrentType
@@ -39,15 +48,6 @@ namespace Game
             get { return currentDir; }
             private set { currentDir = value; }
         }
-
-        [SerializeField]
-        private Sprite emptySprite;
-        [SerializeField]
-        private Sprite lightSprite;
-        [SerializeField]
-        private Sprite wallSprite;
-        [SerializeField]
-        private Sprite directionSprite;
 
         [SerializeField]
         private bool canPass;
@@ -89,31 +89,30 @@ namespace Game
             Initialize(dir);
         }
 
-        [ContextMenu("��������������")]
         private void Initialize(Direction dir)
         {
             switch (currentType)
             {
                 case Types.Empty:
-                    GetComponent<SpriteRenderer>().sprite = emptySprite;
+                    GetComponent<SpriteRenderer>().color = emptyColor;
                     CanEnd = false;
                     CanPass = true;
                     CurrentDir = Direction.None;
                     break;
                 case Types.Light:
-                    GetComponent<SpriteRenderer>().sprite = lightSprite;
+                    GetComponent<SpriteRenderer>().color = lightColor;
                     CanEnd = true;
                     CanPass = false;
                     CurrentDir = Direction.None;
                     break;
                 case Types.Wall:
-                    GetComponent<SpriteRenderer>().sprite = wallSprite;
+                    GetComponent<SpriteRenderer>().color = wallColor;
                     CanEnd = true;
                     CanPass = false;
                     CurrentDir = Direction.None;
                     break;
                 case Types.Direction:
-                    GetComponent<SpriteRenderer>().sprite = directionSprite;
+                    GetComponent<SpriteRenderer>().color = directionColor;
                     CanEnd = false;
                     CanPass = true;
                     CurrentDir = dir;
