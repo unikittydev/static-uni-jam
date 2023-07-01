@@ -1,8 +1,6 @@
-using Game;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.EventSystems;
 
 namespace Game
 {
@@ -78,6 +76,8 @@ namespace Game
             }
         }
 
+        [SerializeField] private UnityEvent onRayRelease;
+        
         private void Awake()
         {
             Initialize(Direction.None);
@@ -89,7 +89,7 @@ namespace Game
             Initialize(dir);
         }
 
-        [ContextMenu("Переопределить")]
+        [ContextMenu("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ")]
         private void Initialize(Direction dir)
         {
             switch (currentType)
@@ -123,9 +123,13 @@ namespace Game
 
         private void OnMouseDown()
         {
+            if (EventSystem.current.IsPointerOverGameObject())
+                return;
+            
             if (currentType != Types.Direction) return;
 
             PlateGameController.instance.ReleaseRay(this);
+            onRayRelease?.Invoke();
         }
     }
 }
