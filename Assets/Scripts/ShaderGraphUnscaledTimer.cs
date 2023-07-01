@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Game
@@ -9,6 +10,11 @@ namespace Game
         private static readonly int UNSCALED_TIME_ID = Shader.PropertyToID(UNSCALED_TIME);
         
         [SerializeField] private Material tapes;
+
+        private void OnDestroy()
+        {
+            tapes.SetFloat(UNSCALED_TIME_ID, 0f);
+        }
 
         private void Update()
         {

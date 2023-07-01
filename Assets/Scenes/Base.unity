@@ -5557,12 +5557,12 @@ RectTransform:
   m_Children:
   - {fileID: 97783054}
   - {fileID: 1776965826}
+  - {fileID: 530656836}
   - {fileID: 767634270}
   - {fileID: 655415438}
   - {fileID: 1807150124}
   - {fileID: 1542474418}
   - {fileID: 399069792}
-  - {fileID: 530656836}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7739,7 +7739,7 @@ MonoBehaviour:
   rightButton: {fileID: 1933519510}
   proceedButton: {fileID: 1105840938}
   gamePause: {fileID: 1707579668}
-  resetProgress: 1
+  resetProgress: 0
 --- !u!4 &1873592702
 Transform:
   m_ObjectHideFlags: 0
