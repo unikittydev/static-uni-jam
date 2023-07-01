@@ -4225,6 +4225,7 @@ MonoBehaviour:
   vhsOverlay: {fileID: 44100581}
   videoPlayer: {fileID: 693920951}
   videoOverlay: {fileID: 97783053}
+  pause: {fileID: 1707579668}
   completedLevelColor: {r: 0.59842515, g: 0.20472437, b: 1, a: 1}
   menuCursor: {fileID: 11400000, guid: 44aad2d582b745946942674d418eed6a, type: 2}
   gameCursor: {fileID: 11400000, guid: 677cf9eab73485741b457810756b661b, type: 2}
