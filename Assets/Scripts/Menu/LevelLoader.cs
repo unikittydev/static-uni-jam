@@ -24,7 +24,7 @@ namespace Game
         [SerializeField] private GameObject mainMenuPanel;
         [SerializeField] private MenuNavigation navigation;
         [SerializeField] private WhiteNoiseCreator noiseGenerator;
-        [SerializeField] private ImageFader screenOverlay;
+        [SerializeField] private NoiseFader screenOverlay;
         [SerializeField] private VHSOverlay vhsOverlay;
         [SerializeField] private VideoPlayer videoPlayer;
         [SerializeField] private GameObject videoOverlay;
