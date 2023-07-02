@@ -38,6 +38,7 @@ namespace Game
             }
             color.a = to;
             image.color = color;
+            noiseSource.volume = to;
 
             if (!value)
             {
