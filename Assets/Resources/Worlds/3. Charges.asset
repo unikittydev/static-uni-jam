@@ -22,3 +22,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0c1282a1c5fc8f74d9f7a14d4bb84076, type: 2}
   - {fileID: 11400000, guid: 3c4ef404501312e468a6395f539d857a, type: 2}
   tutorial: {fileID: 11400000, guid: 19719e1925bf9624ead0327920d9ee7f, type: 2}
+  plateTint: {r: 0.4, g: 0.3647059, b: 0.7019608, a: 1}

@@ -10,6 +10,7 @@ namespace Game
         public LevelData[] requirements;
         public LevelData[] levelIndices;
         public TutorialInfo tutorial;
+        public Color plateTint;
         
         public bool IsUnlocked(List<LevelData> completedLevels)
         {

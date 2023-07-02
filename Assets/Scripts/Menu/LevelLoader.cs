@@ -30,6 +30,7 @@ namespace Game
         [SerializeField] private GameObject videoOverlay;
         [SerializeField] private GamePause pause;
         [SerializeField] private TutorialController tutorial;
+        [SerializeField] private SpriteRenderer plate;
         
         [SerializeField] private Color completedLevelColor;
         [Header("Cursors")]
@@ -181,6 +182,9 @@ namespace Game
             vhsOverlay.Stop();
             sceneLoad.allowSceneActivation = true;
             
+            plate.gameObject.SetActive(true);
+            plate.color = currentWorld.plateTint;
+            
             yield return StartCoroutine(screenOverlay.SetFade(false));
             Cursor.visible = true;
             noiseGenerator.enabled = false;
@@ -222,6 +226,8 @@ namespace Game
 
             noiseGenerator.enabled = true;
             yield return StartCoroutine(screenOverlay.SetFade(true));
+            
+            plate.gameObject.SetActive(false);
 
             if (showVideo)
             {
@@ -255,7 +261,7 @@ namespace Game
             
             noiseGenerator.enabled = true;
             yield return StartCoroutine(screenOverlay.SetFade(true));
-            
+
             AsyncOperation sceneUnload = SceneManager.UnloadSceneAsync(currentLevel.buildIndex);
             
             while (!sceneUnload.isDone)
