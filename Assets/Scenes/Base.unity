@@ -3240,6 +3240,7 @@ MonoBehaviour:
   fadeTime: 1
   image: {fileID: 1807150126}
   noiseSource: {fileID: 904693929}
+  maxNoiseVolume: 0.4
 --- !u!82 &904693929
 AudioSource:
   m_ObjectHideFlags: 0
