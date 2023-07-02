@@ -21,15 +21,7 @@ namespace Game
         
         private TutorialInfo currentInfo;
         private int currentIndex;
-
-        private bool canClose;
-
-        private void Update()
-        {
-            //if (canClose && Input.GetKeyDown(KeyCode.Escape))
-            //    Hide();
-        }
-
+        
         public void SetTutorialInfo(TutorialInfo info)
         {
             currentInfo = info;
@@ -82,7 +74,6 @@ namespace Game
             if (currentIndex == currentInfo.labels.Length - 1)
             {
                 proceedButton.gameObject.SetActive(true);
-                canClose = true;
                 PlayerPrefs.SetInt(string.Format(TUT_WATCHED, currentInfo.name), 1);
             }
         }
