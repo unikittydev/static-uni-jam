@@ -9,6 +9,7 @@ namespace Game
         [SerializeField] private float fadeTime;
         [SerializeField] private Image image;
         [SerializeField] private AudioSource noiseSource;
+        [SerializeField] private float maxNoiseVolume;
 
         public IEnumerator SetFade(bool value)
         {
@@ -18,7 +19,7 @@ namespace Game
             Color color = image.color;
             color.a = from;
             image.color = color;
-            noiseSource.volume = from;
+            noiseSource.volume = from * maxNoiseVolume;
 
             if (value)
             {
@@ -32,7 +33,7 @@ namespace Game
             {
                 color.a = Mathf.Lerp(from, to, Mathf.Clamp01(counter / fadeTime));
                 image.color = color;
-                noiseSource.volume = color.a;
+                noiseSource.volume = color.a * maxNoiseVolume;
                 counter += Time.unscaledDeltaTime;
                 yield return null;
             }
