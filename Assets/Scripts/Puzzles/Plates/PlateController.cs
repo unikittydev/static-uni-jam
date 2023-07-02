@@ -128,6 +128,7 @@ namespace Game
             if (currentType != Types.Direction) return;
 
             PlateGameController.instance.ReleaseRay(this);
+            
             onRayRelease?.Invoke();
         }
     }

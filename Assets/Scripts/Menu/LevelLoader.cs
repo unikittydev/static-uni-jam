@@ -36,6 +36,10 @@ namespace Game
         [Header("Cursors")]
         [SerializeField] private CursorData menuCursor;
         [SerializeField] private CursorData gameCursor;
+
+        [Header("Themes")]
+        [SerializeField] private AudioClipFader menuTheme;
+        [SerializeField] private AudioClipFader levelTheme;
         
         private ProgressData progress;
         
@@ -173,7 +177,9 @@ namespace Game
             menu.SetActive(false);
             
             noiseGenerator.enabled = true;
+            StartCoroutine(menuTheme.Fade(false));
             yield return StartCoroutine(screenOverlay.SetFade(true));
+            
             yield return new WaitForSecondsRealtime(1f);
 
             while (sceneLoad.progress < 0.9f)
@@ -185,9 +191,11 @@ namespace Game
             plate.gameObject.SetActive(true);
             plate.color = currentWorld.plateTint;
             
+            StartCoroutine(levelTheme.Fade(true));
             yield return StartCoroutine(screenOverlay.SetFade(false));
-            Cursor.visible = true;
             noiseGenerator.enabled = false;
+            
+            Cursor.visible = true;
             pause.enabled = true;
 
             if (currentWorld.tutorial)
@@ -225,6 +233,7 @@ namespace Game
                 vhsOverlay.Play(menuName, LevelState.Stop);
 
             noiseGenerator.enabled = true;
+            StartCoroutine(levelTheme.Fade(false));
             yield return StartCoroutine(screenOverlay.SetFade(true));
             
             plate.gameObject.SetActive(false);
@@ -245,6 +254,8 @@ namespace Game
             Cursor.visible = true;
             vhsOverlay.Stop();
             menu.SetActive(true);
+            
+            StartCoroutine(menuTheme.Fade(true));
             yield return StartCoroutine(screenOverlay.SetFade(false));
             noiseGenerator.enabled = false;
 
@@ -254,12 +265,14 @@ namespace Game
         private IEnumerator RestartLevelCoroutine()
         {
             Time.timeScale = 0f;
-            
             pause.enabled = false;
+            
             Cursor.visible = false;
+            
             vhsOverlay.Play(currentLevel.name, LevelState.Restart);
             
             noiseGenerator.enabled = true;
+            StartCoroutine(levelTheme.Fade(false));
             yield return StartCoroutine(screenOverlay.SetFade(true));
 
             AsyncOperation sceneUnload = SceneManager.UnloadSceneAsync(currentLevel.buildIndex);
@@ -275,10 +288,12 @@ namespace Game
             
             vhsOverlay.Stop();
             
+            StartCoroutine(levelTheme.Fade(true));
             yield return StartCoroutine(screenOverlay.SetFade(false));
-            Cursor.visible = true;
             noiseGenerator.enabled = false;
-
+            
+            Cursor.visible = true;
+            
             pause.enabled = true;
             Time.timeScale = 1f;
         }
