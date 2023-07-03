@@ -9,22 +9,13 @@ public class SlidergameController : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        
     }
-
-    public void SetAllDynamic(GameObject exception)
-    {
-        foreach(Transform child in transform)
-        {
-            if (child.GetChild(0).gameObject == exception) continue;
-            child.GetChild(0).transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-        }
-    }
-
-    public void SetAllStatic()
+    public void ChangeAllMaxPoints()
     {
         foreach (Transform child in transform)
         {
-            child.GetChild(0).GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+            child.GetComponent<SliderController>().ChangeMaxPoints();
         }
     }
 

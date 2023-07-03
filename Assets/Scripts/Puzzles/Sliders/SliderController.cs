@@ -3,37 +3,52 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Rendering;
 
 namespace Game
 {
     public class SliderController : MonoBehaviour
     {
-        private Vector3 pointCharge = new Vector3(1, -1, 0);
+        private Vector3 pointCharge;
         public Vector3 PointCharge
         {
             get { return pointCharge; }
             private set { pointCharge = value; }
         }
         [SerializeField]
-        private Vector3 pointFirst = new Vector3(1, -5, 0);
+        private Vector3 pointFirst;
         public Vector3 PointFirst
         {
             get { return pointFirst; }
             private set { pointFirst = value; }
         }
         [SerializeField]
-        private Vector3 pointSecond = new Vector3(5, -1, 0);
+        private Vector3 pointSecond;
         public Vector3 PointSecond
         {
             get { return pointSecond; }
             private set { pointSecond = value; }
         }
         [SerializeField]
-        private Vector3 pointMouse = new Vector3(5, -1, 0);
+        private Vector3 pointMouse;
         public Vector3 PointMouse
         {
             get { return pointMouse; }
             private set { pointMouse = value; }
+        }
+
+        private Vector3 pointFirstMax;
+        public Vector3 PointFirstMax
+        {
+            get { return pointFirstMax; }
+            private set { pointFirstMax = value; }
+        }
+        [SerializeField]
+        private Vector3 pointSecondMax;
+        public Vector3 PointSecondMax
+        {
+            get { return pointSecondMax; }
+            private set { pointSecondMax = value; }
         }
 
         [SerializeField]
@@ -46,22 +61,30 @@ namespace Game
         [SerializeField]
         private GameObject secondPoint;
 
+        [SerializeField]
+        private GameObject firstMax;
+        [SerializeField]
+        private GameObject secondMax;
+
         [ContextMenu("Вектор")]
         private void Start()
         {
             line.gameObject.SetActive(true);
             charge.gameObject.SetActive(true);
 
-            firstPoint.transform.position += new Vector3(0, 0, -2);
-            secondPoint.transform.position += new Vector3(0, 0, -2);
             pointFirst = firstPoint.transform.position;
             pointSecond = secondPoint.transform.position;
 
-            line.positionCount = 2;
-            line.SetPosition(0, PointFirst + new Vector3(0, 0, 2));
-            line.SetPosition(1, PointSecond + new Vector3(0, 0, 2));
+            pointFirstMax = pointFirst;
+            pointSecondMax = pointSecond;
+            firstMax.transform.position = pointFirstMax;
+            secondMax.transform.position = pointSecondMax;
 
-            PointCharge = Vector3.Lerp(pointFirst, pointSecond, 0.5f) + new Vector3(0, 0, -3);
+            line.positionCount = 2;
+            line.SetPosition(0, PointFirst);
+            line.SetPosition(1, PointSecond);
+
+            PointCharge = Vector3.Lerp(pointFirst, pointSecond, 0.5f);
             charge.transform.position = PointCharge;
         }
         
@@ -69,47 +92,55 @@ namespace Game
         {
             PointMouse = Camera.main.ScreenToWorldPoint(Input.mousePosition + new Vector3(0, 0, 10));
 
-            Vector3 oldPos = charge.transform.position;
-
-            if (Mathf.Pow(Vector3.Distance(PointFirst, PointMouse), 2) >= Mathf.Pow(Vector3.Distance(PointFirst, PointSecond), 2) + Mathf.Pow(Vector3.Distance(PointMouse, PointSecond), 2)){
-                PointCharge = PointSecond;
+            if (Mathf.Pow(Vector3.Distance(PointFirstMax, PointMouse), 2) >= Mathf.Pow(Vector3.Distance(PointFirstMax, PointSecondMax), 2) + Mathf.Pow(Vector3.Distance(PointMouse, PointSecondMax), 2)){
+                PointCharge = PointSecondMax;
             }
-            else if (Mathf.Pow(Vector3.Distance(PointSecond, PointMouse), 2) >= Mathf.Pow(Vector3.Distance(PointFirst, PointSecond), 2) + Mathf.Pow(Vector3.Distance(PointMouse, PointFirst), 2))
+            else if (Mathf.Pow(Vector3.Distance(PointSecondMax, PointMouse), 2) >= Mathf.Pow(Vector3.Distance(PointFirstMax, PointSecondMax), 2) + Mathf.Pow(Vector3.Distance(PointMouse, PointFirstMax), 2))
             {
-                PointCharge = PointFirst;
+                PointCharge = PointFirstMax;
             }
             else
             {
-                PointCharge = Vector3.Project(PointMouse - PointFirst, PointSecond - PointFirst) + PointFirst;
+                PointCharge = Vector3.Project(PointMouse - PointFirstMax, PointSecondMax - PointFirstMax) + PointFirstMax;
             }
-            //charge.transform.position = PointCharge;
+            PointCharge = new Vector3(PointCharge.x, PointCharge.y, 0);
+            charge.transform.position = PointCharge;
+            FindClosestCharge();
+        }
 
-            //charge.Rb.MovePosition(PointCharge);
+        public void ChangeMaxPoints()
+        {
 
-            Collider2D[] circels = Physics2D.OverlapCircleAll(PointCharge, charge.gameObject.GetComponent<CircleCollider2D>().radius);
-
-            if (circels.Length < 2)
+            var firstPointHits = Physics2D.CircleCastAll(charge.transform.position, charge.gameObject.GetComponent<CircleCollider2D>().radius, PointFirst - PointSecond);
+            if (firstPointHits.Length > 1)
             {
-                if (circels.Length == 0 || charge.gameObject == circels[0].gameObject)
-                {
-                    Debug.Log("Нет объекта");
-                    //Debug.Log(oldPos);
-                    //Debug.Log(charge.transform.position);
-                    //Debug.Log(Vector3.Project(charge.transform.position - PointFirst, PointSecond - PointFirst) + PointFirst);
-                    //charge.Rb.MovePosition(PointCharge);
-                    charge.transform.position = PointCharge;
-                }
+                PointFirstMax = Vector3.Lerp(2 * (new Vector3(firstPointHits[1].point.x, firstPointHits[1].point.y, 0)) - firstPointHits[1].collider.gameObject.transform.position, PointSecond, 0.01f);
+            }
+            else
+            {
+                PointFirstMax = PointFirst;
+            }
+            firstMax.transform.position = PointFirstMax;
+
+            var secondPointHits = Physics2D.CircleCastAll(charge.transform.position, charge.gameObject.GetComponent<CircleCollider2D>().radius, PointSecond - PointFirst);
+
+            if (secondPointHits.Length > 1)
+            {
                 
+                PointSecondMax = Vector3.Lerp(2 * (new Vector3(secondPointHits[1].point.x, secondPointHits[1].point.y, 0)) - secondPointHits[1].collider.gameObject.transform.position, PointFirst, 0.01f);
             }
             else
             {
-                Debug.Log("Есть объект");
+                PointSecondMax = PointSecond;
             }
+            secondMax.transform.position = PointSecondMax;
+        }
 
-            //if (charge.transform.position != PointCharge)
-            //{
-            //    charge.transform.position = oldPos;
-            //}
+        public void FindClosestCharge()
+        {
+            var charges = Physics2D.OverlapCircleAll(charge.transform.position, 0.55f);
+            //Debug.Log(charges.Length);
+            if (charges.Length > 1) charges[1].gameObject.GetComponent<ChargeController>().ChangeCharge();
         }
     }
 }

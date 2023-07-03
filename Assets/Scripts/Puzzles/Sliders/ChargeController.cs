@@ -5,46 +5,59 @@ using UnityEngine;
 
 public class ChargeController : MonoBehaviour
 {
-    [SerializeField]
-    private Rigidbody2D rb;
-
-    public Rigidbody2D Rb => rb;
-
-    private bool canMove = true;
 
     public Collision2D collision;
 
     [SerializeField]
+    private SpriteRenderer sprite;
+
+    [SerializeField]
     private float charge = 0.0f;
+
+    [SerializeField]
+    private float changeCharge = 0.01f;
+
+    private void Start()
+    {
+        sprite.color = new Color(charge, 0, 1 - charge);
+    }
+
+    public void ChangeCharge()
+    {
+        if (charge < 1.0f)
+        {
+            charge += changeCharge;
+        }
+
+        sprite.color = new Color(charge, 0, 1 - charge);
+    }
 
     void OnMouseDown()
     {
-        //canMove = true;
-        //SlidergameController.instance.SetAllDynamic(gameObject);
+        SlidergameController.instance.ChangeAllMaxPoints();
     }
     void OnMouseDrag()
     {
-        //Debug.Log("drag");
-        //rb.bodyType = RigidbodyType2D.Dynamic;
-        if (canMove) transform.parent.gameObject.GetComponent<SliderController>().ChangePositions();
+        transform.parent.gameObject.GetComponent<SliderController>().ChangePositions();
     }
     void OnMouseUp()
     {
-        //rb.bodyType = RigidbodyType2D.Static;
-        //SlidergameController.instance.SetAllStatic();
+
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    public void PrintCharge()
     {
-        this.collision = collision;
-        //canMove = false;
-        //Debug.Log("Enter");
+        Debug.Log(charge);
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        this.collision = null;
-        //canMove = true;
-        //Debug.Log("Exit");
+        Debug.Log("Enter");
+        
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        Debug.Log("Exit");
     }
 }
