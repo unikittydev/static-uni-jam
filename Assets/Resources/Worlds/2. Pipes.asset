@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17e491e16aa34ce2bd492eb5ac87c167, type: 3}
   m_Name: 2. Pipes
   m_EditorClassIdentifier: 
-  worldName: "\u041F\u0440\u043E\u0432\u043E\u0434\u0430"
+  worldName: "\u0423\u0440\u043E\u0432\u043D\u0438 \u0441 \u041F\u0440\u043E\u0432\u043E\u0434\u0430\u043C\u0438"
   requirements:
   - {fileID: 11400000, guid: b4901e31a949ca341b32d283d22d4e04, type: 2}
   levelIndices:

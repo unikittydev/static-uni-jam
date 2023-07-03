@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17e491e16aa34ce2bd492eb5ac87c167, type: 3}
   m_Name: 6. Complex
   m_EditorClassIdentifier: 
-  worldName: "\u041A\u043E\u043C\u043F\u043B\u0435\u043A\u0441\u043D\u044B\u0435
-    \u0443\u0440\u043E\u0432\u043D\u0438"
+  worldName: "\u0421\u043B\u043E\u0436\u043D\u044B\u0435 \u0443\u0440\u043E\u0432\u043D\u0438"
   requirements: []
-  levelIndices: []
+  levelIndices:
+  - {fileID: 11400000, guid: 50597bb2b8b9e6147b8ba9c894702626, type: 2}
   tutorial: {fileID: 0}
-  plateTint: {r: 1, g: 1, b: 1, a: 1}
+  plateTint: {r: 0.60049576, g: 0.8784314, b: 0.31764704, a: 1}

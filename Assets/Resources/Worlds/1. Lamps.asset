@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17e491e16aa34ce2bd492eb5ac87c167, type: 3}
   m_Name: 1. Lamps
   m_EditorClassIdentifier: 
-  worldName: "\u041B\u0430\u043C\u043F\u044B"
+  worldName: "\u0423\u0440\u043E\u0432\u043D\u0438 \u0441 \u041B\u0430\u043C\u043F\u0430\u043C\u0438"
   requirements: []
   levelIndices:
   - {fileID: 11400000, guid: b19e9802696a1d2479af7b444f6f0173, type: 2}
