@@ -65,4 +65,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Plates Levels/Lvl 4 plates.unity
     guid: 7ad2658dd06553a40bb4184904454407
+  - enabled: 1
+    path: Assets/Scenes/Plates Levels/Lvl 5 plates.unity
+    guid: b079265261410614087eb4f04d891672
   m_configObjects: {}
