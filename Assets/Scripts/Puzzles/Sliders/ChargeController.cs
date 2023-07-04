@@ -1,4 +1,5 @@
 using Game;
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,9 +21,31 @@ public class ChargeController : MonoBehaviour
     private float minCharge = -1.0f;
 
     [SerializeField]
-    private float changeAmount = 0.01f;
+    private float changeAmount = 0.5f;
 
     public float ChangeAmount => changeAmount;
+
+    private bool canChange = true;
+
+    public bool CanChange => canChange;
+
+    private bool canMove = true;
+
+    public bool CanMove => canMove;
+
+    private bool needForWin = false;
+
+    public bool NeedForWin => needForWin;
+
+    [SerializeField]
+    private float winAmountDown = 0.0f;
+
+    [SerializeField]
+    private float winAmountUp = 0.0f;
+
+    private bool canWin = false;
+
+    public bool CanWin => canWin;
 
     private void Start()
     {
@@ -32,32 +55,30 @@ public class ChargeController : MonoBehaviour
 
     public void ChangeCharge(float change)
     {
-        charge = Mathf.Max(minCharge, Mathf.Min(charge + change, maxCharge));
-        
+        if (!canChange) return;
+
+        charge = Mathf.Max(minCharge, Mathf.Min(charge + change * Time.deltaTime, maxCharge));
         sprite.color = new Color(Mathf.Abs(charge + 1) / 2, Mathf.Abs(Mathf.Abs(charge) - 1) / 2, Mathf.Abs(charge - 1) / 2);
+
+        if (needForWin)
+        {
+            canWin = charge <= winAmountUp && charge >= winAmountDown;
+            SlidergameController.instance.CheckWin();
+        }
     }
 
     void OnMouseDown()
     {
+        if (!canMove) return;
         SlidergameController.instance.ChangeAllMaxPoints();
     }
     void OnMouseDrag()
     {
+        if (!canMove) return;
         transform.parent.gameObject.GetComponent<SliderController>().ChangePositions();
     }
     void OnMouseUp()
     {
-
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        Debug.Log("Enter");
-        
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        Debug.Log("Exit");
+        if (!canMove) return;
     }
 }

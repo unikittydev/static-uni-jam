@@ -61,11 +61,6 @@ namespace Game
         [SerializeField]
         private GameObject secondPoint;
 
-        [SerializeField]
-        private GameObject firstMax;
-        [SerializeField]
-        private GameObject secondMax;
-
         [ContextMenu("Вектор")]
         private void Start()
         {
@@ -77,8 +72,6 @@ namespace Game
 
             pointFirstMax = pointFirst;
             pointSecondMax = pointSecond;
-            firstMax.transform.position = pointFirstMax;
-            secondMax.transform.position = pointSecondMax;
 
             line.positionCount = 2;
             line.SetPosition(0, PointFirst);
@@ -120,7 +113,6 @@ namespace Game
             {
                 PointFirstMax = PointFirst;
             }
-            firstMax.transform.position = PointFirstMax;
 
             var secondPointHits = Physics2D.CircleCastAll(charge.transform.position, charge.gameObject.GetComponent<CircleCollider2D>().radius, PointSecond - PointFirst);
 
@@ -133,16 +125,16 @@ namespace Game
             {
                 PointSecondMax = PointSecond;
             }
-            secondMax.transform.position = PointSecondMax;
         }
 
         public void FindClosestCharge()
         {
             var charges = Physics2D.OverlapCircleAll(charge.transform.position, 0.55f);
             if (charges.Length < 2) return;
+
             var closestCharge = charges[1].gameObject.GetComponent<ChargeController>();
 
-            if (closestCharge.Charge == charge.Charge) return;
+            if (closestCharge.Charge == charge.Charge || Mathf.Abs(closestCharge.Charge - charge.Charge) < 0.01) return;
 
             if (closestCharge.Charge > charge.Charge)
             {

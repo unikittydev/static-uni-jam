@@ -3,20 +3,53 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SlidergameController : MonoBehaviour
+namespace Game
 {
-    public static SlidergameController instance { get; private set; }
-    private void Awake()
-    {
-        instance = this;
-        
-    }
-    public void ChangeAllMaxPoints()
-    {
-        foreach (Transform child in transform)
-        {
-            child.GetComponent<SliderController>().ChangeMaxPoints();
-        }
-    }
 
+    public class SlidergameController : PuzzleBase
+    {
+        public static SlidergameController instance { get; private set; }
+        private void Awake()
+        {
+            instance = this;
+
+        }
+        public void CheckWin()
+        {
+            foreach (Transform child in transform)
+            {
+                try
+                {
+                    if (!child.GetComponent<ChargeController>().CanWin)
+                    {
+                        CancelWin();
+                        return;
+                    }
+                }
+                catch
+                {
+                    continue;
+                }
+                
+                
+            }
+            TryWin();
+        }
+
+        public void ChangeAllMaxPoints()
+        {
+            foreach (Transform child in transform)
+            {
+                try
+                {
+                    child.GetComponent<SliderController>().ChangeMaxPoints();
+                }
+                catch
+                {
+                    continue;
+                }
+            }
+        }
+
+    }
 }
