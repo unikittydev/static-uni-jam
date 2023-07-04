@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Cyan;
 using Game;
@@ -32,6 +33,10 @@ public class GameSettings : MonoBehaviour
         }
         else
             data = new GameSettingsData();
+    }
+
+    private void Start()
+    {
         ApplySettings();
     }
 
@@ -39,24 +44,16 @@ public class GameSettings : MonoBehaviour
     {
         SaveData();
     }
-
-    [ContextMenu("Reset Settings")]
-    public void ResetSettings()
-    {
-        PlayerPrefs.DeleteKey(SETTINGS_DATA);
-        data = new GameSettingsData();
-        ApplySettings();
-    }
-
+    
     private void ApplySettings()
     {
-        musicGroup.audioMixer.SetFloat(musicVolumeParameter, GetVolumeFromSlider(data.musicVolume));
-        sfxGroup.audioMixer.SetFloat(sfxVolumeParameter, GetVolumeFromSlider(data.sfxVolume));
-        TogglePostFX(data.postFX);
-
         musicSlider.SetValueWithoutNotify(data.musicVolume);
         sfxSlider.SetValueWithoutNotify(data.sfxVolume);
         postFXToggle.SetValue(data.postFX);
+        
+        SetMusicVolume(data.musicVolume);
+        SetSFXVolume(data.sfxVolume);
+        TogglePostFX(data.postFX);
     }
     
     public void SaveData()
