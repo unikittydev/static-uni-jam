@@ -7415,7 +7415,6 @@ MonoBehaviour:
   screenOverlay: {fileID: 904693928}
   vhsOverlay: {fileID: 44100581}
   videoPlayer: {fileID: 693920951}
-  videoOverlay: {fileID: 97783053}
   videoFader: {fileID: 97783057}
   pause: {fileID: 1707579668}
   tutorial: {fileID: 1873592701}
