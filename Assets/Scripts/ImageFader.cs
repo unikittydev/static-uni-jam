@@ -34,6 +34,7 @@ namespace Game
             if (!value)
                 gameObject.SetActive(false);
 
+            color.a = 1f;
             image.color = color;
         }
 

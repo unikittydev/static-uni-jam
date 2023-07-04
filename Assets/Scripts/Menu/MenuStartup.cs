@@ -9,7 +9,6 @@ namespace Game
     public class MenuStartup : MonoBehaviour
     {
         [SerializeField] private EventSystem eventSystem;
-        //[Header("Volume tint")] private Volume volume;
         [Header("Logo")]
         [SerializeField] private Graphic logo;
         [SerializeField] private float logoDelay = 0f, logoFadeInSpeed = 1f, logoStayTime = 5f, logoFadeOutSpeed = 2f;
@@ -29,7 +28,7 @@ namespace Game
         private IEnumerator FadeLogo()
         {
             logo.gameObject.SetActive(false);
-            yield return new WaitForSecondsRealtime(logoDelay);
+            yield return new WaitForSeconds(logoDelay);
             logo.gameObject.SetActive(true);
 
             Color color = logo.color;
@@ -42,14 +41,14 @@ namespace Game
                 color.a = Mathf.Clamp01(counter / logoFadeInSpeed);
                 logo.color = color;
                 
-                counter += Time.unscaledDeltaTime;
+                counter += Time.deltaTime;
                 yield return null;
             }
 
             color.a = 1f;
             logo.color = color;
 
-            yield return new WaitForSecondsRealtime(logoStayTime);
+            yield return new WaitForSeconds(logoStayTime);
             
             counter = 0f;
             while (counter <= logoFadeOutSpeed)
@@ -57,7 +56,7 @@ namespace Game
                 color.a = 1f - Mathf.Clamp01(counter / logoFadeOutSpeed);
                 logo.color = color;
                 
-                counter += Time.unscaledDeltaTime;
+                counter += Time.deltaTime;
                 yield return null;
             }
 
@@ -75,7 +74,7 @@ namespace Game
                 g.color = color;
             }
             
-            yield return new WaitForSecondsRealtime(graphicsDelay);
+            yield return new WaitForSeconds(graphicsDelay);
 
             float counter = 0f;
             while (counter <= graphicsFadeInSpeed)
@@ -89,7 +88,7 @@ namespace Game
                     g.color = color;
                 }
 
-                counter += Time.unscaledDeltaTime;
+                counter += Time.deltaTime;
                 yield return null;
             }
 
