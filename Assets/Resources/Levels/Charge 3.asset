@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: "\u0417\u0410\u0420\u042F\u0414\u042B 03"
   buildIndex: 8
-  endVideo: {fileID: 32900000, guid: d9186bfc43b4f8143b958b7bb5acb397, type: 3}
+  endVideo: {fileID: 32900000, guid: 276a392ef4646ef49848546a570e3995, type: 3}
