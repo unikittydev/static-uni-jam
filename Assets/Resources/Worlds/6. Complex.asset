@@ -16,5 +16,6 @@ MonoBehaviour:
   requirements: []
   levelIndices:
   - {fileID: 11400000, guid: 50597bb2b8b9e6147b8ba9c894702626, type: 2}
+  - {fileID: 11400000, guid: 40b275bf05a83f24ba7741480ad236ed, type: 2}
   tutorial: {fileID: 0}
   plateTint: {r: 0.60049576, g: 0.8784314, b: 0.31764704, a: 1}

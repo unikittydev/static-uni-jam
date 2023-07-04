@@ -71,4 +71,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/6. Complex levels/Lvl 1 complex.unity
     guid: f288fbbb0168d604c9add04c59e6554c
+  - enabled: 1
+    path: Assets/Scenes/6. Complex levels/Lvl 2 complex.unity
+    guid: 3018f0b1ff2bd72479f3598921d1220b
   m_configObjects: {}
