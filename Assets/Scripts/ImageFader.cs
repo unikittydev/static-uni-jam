@@ -1,41 +1,47 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Game
 {
-    public class AudioClipFader : MonoBehaviour
+    public class ImageFader : MonoBehaviour
     {
-        [SerializeField] private AudioSource source;
+        [SerializeField] private RawImage image;
         [SerializeField] private float fadeTime;
         
         public IEnumerator Fade(bool value)
         {
             float from = value ? 0f : 1f, to = 1f - from;
             float counter = 0f;
-
-            source.volume = from;
+            
+            Color color = image.color;
+            color.a = from;
+            image.color = color;
+            
             if (value)
-            {
                 gameObject.SetActive(true);
-                source.Play();
-            }
 
             while (counter < fadeTime)
             {
                 float t = Mathf.Clamp01(counter / fadeTime);
-                source.volume = Mathf.Lerp(from, to, t);
+                color.a = Mathf.Lerp(from, to, t);
+                image.color = color;
                 
                 counter += Time.unscaledDeltaTime;
                 yield return null;
             }
 
             if (!value)
-            {
-                source.Stop();
                 gameObject.SetActive(false);
-            }
 
-            source.volume = to;
+            image.color = color;
+        }
+
+        public void SetImageAlpha(float value)
+        {
+            Color color = image.color;
+            color.a = value;
+            image.color = color;
         }
     }
 }

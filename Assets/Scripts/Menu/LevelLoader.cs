@@ -28,6 +28,7 @@ namespace Game
         [SerializeField] private VHSOverlay vhsOverlay;
         [SerializeField] private VideoPlayer videoPlayer;
         [SerializeField] private GameObject videoOverlay;
+        [SerializeField] private ImageFader videoFader;
         [SerializeField] private GamePause pause;
         [SerializeField] private TutorialController tutorial;
         [SerializeField] private SpriteRenderer plate;
@@ -40,6 +41,9 @@ namespace Game
         [Header("Themes")]
         [SerializeField] private AudioClipFader menuTheme;
         [SerializeField] private AudioClipFader levelTheme;
+
+        [SerializeField] private AudioSource winSound;
+        [SerializeField] private float winSoundLength;
         
         private ProgressData progress;
         
@@ -209,20 +213,31 @@ namespace Game
         
         private IEnumerator UnloadLevelCoroutine(bool showVideo)
         {
+            
             Time.timeScale = 0f;
 
             pause.enabled = false;
             Cursor.visible = false;
             Cursor.SetCursor(menuCursor.cursor, menuCursor.hotSpot, CursorMode.Auto);
-
+            
             if (showVideo)
             {
                 vhsOverlay.Play(menuName, LevelState.Complete);
+                StartCoroutine(levelTheme.Fade(false));
+                winSound.Play();
+                yield return new WaitForSecondsRealtime(winSoundLength);
+            }
+
+            if (showVideo)
+            {
                 videoPlayer.clip = currentLevel.endVideo;
                 videoPlayer.time = 0f;
+                
                 videoPlayer.Play();
-                yield return null;
-                videoOverlay.SetActive(true);
+                videoPlayer.StepForward();
+                videoPlayer.Pause();
+                yield return StartCoroutine(videoFader.Fade(true));
+                videoPlayer.Play();
                 yield return new WaitForSecondsRealtime(3f);
                 videoPlayer.Pause();
 
@@ -233,16 +248,12 @@ namespace Game
                 vhsOverlay.Play(menuName, LevelState.Stop);
 
             noiseGenerator.enabled = true;
-            StartCoroutine(levelTheme.Fade(false));
             yield return StartCoroutine(screenOverlay.SetFade(true));
             
             plate.gameObject.SetActive(false);
 
             if (showVideo)
-            {
-                videoPlayer.Stop();
-                videoOverlay.SetActive(false);
-            }
+                yield return StartCoroutine(videoFader.Fade(false));
 
             AsyncOperation sceneUnload = SceneManager.UnloadSceneAsync(currentLevel.buildIndex);
 
