@@ -31,6 +31,9 @@ namespace Game
 
         private void Start()
         {
+            offsetX -= transform.position.x;
+            offsetY -= transform.position.y;
+
             cells = new PlateController[height, width];
             startX = Mathf.RoundToInt(start.transform.position.x + offsetX);
             startY = Mathf.RoundToInt(start.transform.position.y + offsetY);

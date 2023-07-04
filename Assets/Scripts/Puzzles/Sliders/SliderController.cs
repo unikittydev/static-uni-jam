@@ -139,8 +139,21 @@ namespace Game
         public void FindClosestCharge()
         {
             var charges = Physics2D.OverlapCircleAll(charge.transform.position, 0.55f);
-            //Debug.Log(charges.Length);
-            if (charges.Length > 1) charges[1].gameObject.GetComponent<ChargeController>().ChangeCharge();
+            if (charges.Length < 2) return;
+            var closestCharge = charges[1].gameObject.GetComponent<ChargeController>();
+
+            if (closestCharge.Charge == charge.Charge) return;
+
+            if (closestCharge.Charge > charge.Charge)
+            {
+                charge.ChangeCharge(charge.ChangeAmount);
+                closestCharge.ChangeCharge(-charge.ChangeAmount);
+            }
+            else
+            {
+                charge.ChangeCharge(-charge.ChangeAmount);
+                closestCharge.ChangeCharge(charge.ChangeAmount);
+            }
         }
     }
 }

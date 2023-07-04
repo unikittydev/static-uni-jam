@@ -14,22 +14,27 @@ public class ChargeController : MonoBehaviour
     [SerializeField]
     private float charge = 0.0f;
 
+    public float Charge => charge;
+
+    private float maxCharge = 1.0f;
+    private float minCharge = -1.0f;
+
     [SerializeField]
-    private float changeCharge = 0.01f;
+    private float changeAmount = 0.01f;
+
+    public float ChangeAmount => changeAmount;
 
     private void Start()
     {
-        sprite.color = new Color(charge, 0, 1 - charge);
+        charge = Mathf.Max(minCharge, Mathf.Min(charge, maxCharge));
+        sprite.color = new Color(Mathf.Abs(charge + 1) / 2, Mathf.Abs(Mathf.Abs(charge) - 1) / 2, Mathf.Abs(charge - 1) / 2);
     }
 
-    public void ChangeCharge()
+    public void ChangeCharge(float change)
     {
-        if (charge < 1.0f)
-        {
-            charge += changeCharge;
-        }
-
-        sprite.color = new Color(charge, 0, 1 - charge);
+        charge = Mathf.Max(minCharge, Mathf.Min(charge + change, maxCharge));
+        
+        sprite.color = new Color(Mathf.Abs(charge + 1) / 2, Mathf.Abs(Mathf.Abs(charge) - 1) / 2, Mathf.Abs(charge - 1) / 2);
     }
 
     void OnMouseDown()
@@ -43,11 +48,6 @@ public class ChargeController : MonoBehaviour
     void OnMouseUp()
     {
 
-    }
-
-    public void PrintCharge()
-    {
-        Debug.Log(charge);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

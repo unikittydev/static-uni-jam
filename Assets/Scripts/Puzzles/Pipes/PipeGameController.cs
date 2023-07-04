@@ -33,9 +33,11 @@ namespace Game
             instance = this;
         }
 
-        [ContextMenu("����� �����")]
-        void Start()
+        private void Start()
         {
+            offsetX -= transform.position.x; 
+            offsetY -= transform.position.y;
+
             cells = new CellController[height, width];
 
             for (int i = 0; i < height; i++)

@@ -83,6 +83,12 @@ namespace Game
             Initialize(Direction.None);
         }
 
+        [ContextMenu("fwfw")]
+        private void PrintPosition()
+        {
+            Debug.Log(transform.position);
+        }
+
         public void ChangeType(Types type, Direction dir)
         {
             currentType = type;
