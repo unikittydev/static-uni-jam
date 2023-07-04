@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.Video;
@@ -27,12 +28,11 @@ namespace Game
         [SerializeField] private NoiseFader screenOverlay;
         [SerializeField] private VHSOverlay vhsOverlay;
         [SerializeField] private VideoPlayer videoPlayer;
-        [SerializeField] private GameObject videoOverlay;
         [SerializeField] private ImageFader videoFader;
         [SerializeField] private GamePause pause;
         [SerializeField] private TutorialController tutorial;
         [SerializeField] private SpriteRenderer plate;
-        
+
         [SerializeField] private Color completedLevelColor;
         [Header("Cursors")]
         [SerializeField] private CursorData menuCursor;
@@ -213,7 +213,6 @@ namespace Game
         
         private IEnumerator UnloadLevelCoroutine(bool showVideo)
         {
-            
             Time.timeScale = 0f;
 
             pause.enabled = false;
@@ -226,6 +225,7 @@ namespace Game
                 StartCoroutine(levelTheme.Fade(false));
                 winSound.Play();
                 yield return new WaitForSecondsRealtime(winSoundLength);
+                StartCoroutine(menuTheme.Fade(true));
             }
 
             if (showVideo)
@@ -266,7 +266,6 @@ namespace Game
             vhsOverlay.Stop();
             menu.SetActive(true);
             
-            StartCoroutine(menuTheme.Fade(true));
             yield return StartCoroutine(screenOverlay.SetFade(false));
             noiseGenerator.enabled = false;
 
