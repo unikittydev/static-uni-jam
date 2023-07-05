@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9053588546ad9ba47a634be3ebaa78fb, type: 3}
   m_Name: Complex 2
   m_EditorClassIdentifier: 
-  name: "\u0421\u043B\u043E\u0436\u043D\u044B\u0435 2"
+  name: "\u0421\u0435\u0440\u0438\u044F 02"
   buildIndex: 22
-  endVideo: {fileID: 32900000, guid: 619500ce3411f554b93bd5363cfd4968, type: 3}
+  endVideo: {fileID: 32900000, guid: 73acbde9d52fe15429c1bfe242f0d1dc, type: 3}

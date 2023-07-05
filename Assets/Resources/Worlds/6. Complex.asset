@@ -12,10 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17e491e16aa34ce2bd492eb5ac87c167, type: 3}
   m_Name: 6. Complex
   m_EditorClassIdentifier: 
-  worldName: "\u0421\u043B\u043E\u0436\u043D\u044B\u0435 \u0443\u0440\u043E\u0432\u043D\u0438"
-  requirements: []
+  worldName: The Spinning Sofa
+  requirements:
+  - {fileID: 11400000, guid: 88c0aecba5145924cafcd201f85cf8a6, type: 2}
+  - {fileID: 11400000, guid: 3c4ef404501312e468a6395f539d857a, type: 2}
+  - {fileID: 11400000, guid: c467fde773f325342831bbb048b79c84, type: 2}
+  - {fileID: 11400000, guid: c9b0b3efbc7d53343bab1b7a3aaa513e, type: 2}
   levelIndices:
   - {fileID: 11400000, guid: 50597bb2b8b9e6147b8ba9c894702626, type: 2}
   - {fileID: 11400000, guid: 40b275bf05a83f24ba7741480ad236ed, type: 2}
+  - {fileID: 11400000, guid: d862ee3de9713d048852c812919a0ba1, type: 2}
   tutorial: {fileID: 0}
   plateTint: {r: 0.60049576, g: 0.8784314, b: 0.31764704, a: 1}

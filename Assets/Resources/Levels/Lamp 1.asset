@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9053588546ad9ba47a634be3ebaa78fb, type: 3}
   m_Name: Lamp 1
   m_EditorClassIdentifier: 
-  name: "\u041B\u0410\u041C\u041F\u042B 01"
+  name: "\u0421\u0435\u0440\u0438\u044F 01"
   buildIndex: 1
   endVideo: {fileID: 32900000, guid: f144b9d934d4b524fb8b1eca616f1f3f, type: 3}

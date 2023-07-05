@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9053588546ad9ba47a634be3ebaa78fb, type: 3}
   m_Name: Charge 3
   m_EditorClassIdentifier: 
-  name: "\u0417\u0410\u0420\u042F\u0414\u042B 03"
+  name: "\u0421\u0435\u0440\u0438\u044F 03"
   buildIndex: 8
   endVideo: {fileID: 32900000, guid: 276a392ef4646ef49848546a570e3995, type: 3}

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9053588546ad9ba47a634be3ebaa78fb, type: 3}
   m_Name: Pipe 3
   m_EditorClassIdentifier: 
-  name: "\u041F\u0420\u041E\u0412\u041E\u0414\u0410 03"
+  name: "\u0421\u0435\u0440\u0438\u044F 03"
   buildIndex: 13
   endVideo: {fileID: 32900000, guid: 7b41def984308754b85674db7dc133f1, type: 3}

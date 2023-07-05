@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17e491e16aa34ce2bd492eb5ac87c167, type: 3}
   m_Name: 4. Plates
   m_EditorClassIdentifier: 
-  worldName: "\u0423\u0440\u043E\u0432\u043D\u0438 \u0441 \u041F\u043B\u0438\u0442\u0430\u043C\u0438"
+  worldName: Sun and Moon
   requirements:
   - {fileID: 11400000, guid: 9196f595ebcfe7b4a970c1bb9153374d, type: 2}
   levelIndices:

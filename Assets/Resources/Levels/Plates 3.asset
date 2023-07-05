@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9053588546ad9ba47a634be3ebaa78fb, type: 3}
   m_Name: Plates 3
   m_EditorClassIdentifier: 
-  name: "\u041F\u043B\u0438\u0442\u044B 3"
+  name: "\u0421\u0435\u0440\u0438\u044F 03"
   buildIndex: 18
   endVideo: {fileID: 32900000, guid: d9186bfc43b4f8143b958b7bb5acb397, type: 3}
