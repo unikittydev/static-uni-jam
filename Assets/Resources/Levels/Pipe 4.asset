@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: "\u0421\u0435\u0440\u0438\u044F 04"
   buildIndex: 14
-  endVideo: {fileID: 32900000, guid: df22325b1f29316459a15791479f5474, type: 3}
+  endVideoPath: Videos/Dreamlands/Dreamlands 4.mp4

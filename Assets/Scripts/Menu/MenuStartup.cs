@@ -1,20 +1,31 @@
+using System;
 using System.Collections;
+using System.IO;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
+using UnityEngine.Video;
 
 namespace Game
 {
     public class MenuStartup : MonoBehaviour
     {
+        [SerializeField] private VideoPlayer videoPlayer;
         [SerializeField] private EventSystem eventSystem;
+        [SerializeField] private string videoName;
         [Header("Logo")]
         [SerializeField] private Graphic logo;
         [SerializeField] private float logoDelay = 0f, logoFadeInSpeed = 1f, logoStayTime = 5f, logoFadeOutSpeed = 2f;
         [Header("Graphics")]
         [SerializeField] private Graphic[] graphics;
         [SerializeField] private float graphicsDelay = 7f, graphicsFadeInSpeed = 1f;
+
+        private void Awake()
+        {
+            videoPlayer.url = Path.Combine(Application.streamingAssetsPath, videoName);
+            videoPlayer.Play();
+        }
 
         private void Start()
         {

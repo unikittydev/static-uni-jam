@@ -1,6 +1,6 @@
 using System.Collections;
+using System.IO;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.Video;
@@ -230,11 +230,11 @@ namespace Game
 
             if (showVideo)
             {
-                videoPlayer.clip = currentLevel.endVideo;
+                //videoPlayer.clip = currentLevel.endVideo;
+                videoPlayer.url = Path.Combine(Application.streamingAssetsPath, currentLevel.endVideoPath);
                 videoPlayer.time = 0f;
                 
                 videoPlayer.Play();
-                videoPlayer.StepForward();
                 videoPlayer.Pause();
                 yield return StartCoroutine(videoFader.Fade(true));
                 videoPlayer.Play();

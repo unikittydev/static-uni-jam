@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine;
 
 namespace Game
 {
@@ -7,6 +8,11 @@ namespace Game
     {
         public float sfxVolume = GameSettings.maxSliderValue;
         public float musicVolume = GameSettings.maxSliderValue;
-        public bool postFX = true;
+        public bool postFX;
+
+        public GameSettingsData()
+        {
+            postFX = !Application.isMobilePlatform;
+        }
     }
 }

@@ -8,6 +8,7 @@ namespace Game
     {
         public new string name;
         public int buildIndex;
-        public VideoClip endVideo;
+        //public VideoClip endVideo;
+        public string endVideoPath;
     }
 }

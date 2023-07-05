@@ -53,6 +53,7 @@ public class GameSettings : MonoBehaviour
         
         SetMusicVolume(data.musicVolume);
         SetSFXVolume(data.sfxVolume);
+        
         TogglePostFX(data.postFX);
     }
     

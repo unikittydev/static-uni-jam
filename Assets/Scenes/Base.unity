@@ -619,7 +619,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 8600000, guid: 3f7fd93623fdb2d4383a2dc065f34490, type: 2}
+  m_Texture: {fileID: 8600000, guid: 0f1d6cf1c92f4a74f90941d7be29a637, type: 2}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -2916,13 +2916,13 @@ VideoPlayer:
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 342215428}
-  m_TargetTexture: {fileID: 8600000, guid: 3f7fd93623fdb2d4383a2dc065f34490, type: 2}
+  m_TargetTexture: {fileID: 8600000, guid: 0f1d6cf1c92f4a74f90941d7be29a637, type: 2}
   m_TimeReference: 0
   m_TargetMaterialRenderer: {fileID: 0}
   m_TargetMaterialProperty: <noninit>
   m_RenderMode: 2
   m_AspectRatio: 2
-  m_DataSource: 0
+  m_DataSource: 1
   m_TimeUpdateMode: 2
   m_PlaybackSpeed: 1
   m_AudioOutputMode: 0
@@ -3316,13 +3316,13 @@ VideoPlayer:
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 342215428}
-  m_TargetTexture: {fileID: 8600000, guid: ea56ec33b67adf243a3f5baf791736f8, type: 2}
+  m_TargetTexture: {fileID: 8600000, guid: efbc60b144b7b0c45b448e85b536c54f, type: 2}
   m_TimeReference: 0
   m_TargetMaterialRenderer: {fileID: 0}
   m_TargetMaterialProperty: <noninit>
   m_RenderMode: 2
   m_AspectRatio: 2
-  m_DataSource: 0
+  m_DataSource: 1
   m_TimeUpdateMode: 2
   m_PlaybackSpeed: 1
   m_AudioOutputMode: 2
@@ -3332,7 +3332,7 @@ VideoPlayer:
   m_EnabledAudioTracks: 
   m_DirectAudioMutes: 
   m_ControlledAudioTrackCount: 0
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_SkipOnDrop: 1
   m_Looping: 0
   m_WaitForFirstFrame: 1
@@ -3365,7 +3365,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 177ea0e05989d8041a99114e3b065669, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  videoPlayer: {fileID: 788468502}
   eventSystem: {fileID: 1501297574}
+  videoName: Videos/Logo.mp4
   logo: {fileID: 1776965827}
   logoDelay: 0.5
   logoFadeInSpeed: 1
@@ -8197,7 +8199,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 8600000, guid: ea56ec33b67adf243a3f5baf791736f8, type: 2}
+  m_Texture: {fileID: 8600000, guid: efbc60b144b7b0c45b448e85b536c54f, type: 2}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -8939,7 +8941,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 241683286086984227, guid: bb2bb935d01fd964ebe723c7da415394, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 241683286086984227, guid: bb2bb935d01fd964ebe723c7da415394, type: 3}
       propertyPath: m_AnchorMin.x
@@ -8947,11 +8949,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 241683286086984227, guid: bb2bb935d01fd964ebe723c7da415394, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 241683286086984227, guid: bb2bb935d01fd964ebe723c7da415394, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 660.00006
       objectReference: {fileID: 0}
     - target: {fileID: 241683286086984227, guid: bb2bb935d01fd964ebe723c7da415394, type: 3}
       propertyPath: m_SizeDelta.y
@@ -8987,11 +8989,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 241683286086984227, guid: bb2bb935d01fd964ebe723c7da415394, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 330.00003
       objectReference: {fileID: 0}
     - target: {fileID: 241683286086984227, guid: bb2bb935d01fd964ebe723c7da415394, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -350
       objectReference: {fileID: 0}
     - target: {fileID: 241683286086984227, guid: bb2bb935d01fd964ebe723c7da415394, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -9040,6 +9042,10 @@ PrefabInstance:
     - target: {fileID: 3201012621839089984, guid: bb2bb935d01fd964ebe723c7da415394, type: 3}
       propertyPath: m_Name
       value: Quit
+      objectReference: {fileID: 0}
+    - target: {fileID: 3201012621839089984, guid: bb2bb935d01fd964ebe723c7da415394, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

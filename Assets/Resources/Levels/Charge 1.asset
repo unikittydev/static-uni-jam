@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: "\u0421\u0435\u0440\u0438\u044F 01"
   buildIndex: 6
-  endVideo: {fileID: 32900000, guid: d9338f69a7f14fe45b4726be247bc934, type: 3}
+  endVideoPath: Videos/Parasol/White Parasol 1.mp4

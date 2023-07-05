@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: "\u0421\u0435\u0440\u0438\u044F 02"
   buildIndex: 22
-  endVideo: {fileID: 32900000, guid: 73acbde9d52fe15429c1bfe242f0d1dc, type: 3}
+  endVideoPath: Videos/Memes/Nyan Sofa_Trim.mp4

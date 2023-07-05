@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: "\u0421\u0435\u0440\u0438\u044F 03"
   buildIndex: 18
-  endVideo: {fileID: 32900000, guid: d9186bfc43b4f8143b958b7bb5acb397, type: 3}
+  endVideoPath: Videos/Sun and Moon/1_3.mp4

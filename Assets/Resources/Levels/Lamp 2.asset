@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: "\u0421\u0435\u0440\u0438\u044F 02"
   buildIndex: 2
-  endVideo: {fileID: 32900000, guid: db6096ae55327904fb4b63f799f986bd, type: 3}
+  endVideoPath: Videos/Escape from chicken coop!!!/Escape from chicken coop!!! 2.mp4
