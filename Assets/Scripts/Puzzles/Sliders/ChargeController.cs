@@ -25,14 +25,17 @@ public class ChargeController : MonoBehaviour
 
     public float ChangeAmount => changeAmount;
 
+    [SerializeField]
     private bool canChange = true;
 
     public bool CanChange => canChange;
 
+    [SerializeField]
     private bool canMove = true;
 
     public bool CanMove => canMove;
 
+    [SerializeField]
     private bool needForWin = false;
 
     public bool NeedForWin => needForWin;
@@ -43,6 +46,7 @@ public class ChargeController : MonoBehaviour
     [SerializeField]
     private float winAmountUp = 0.0f;
 
+    [SerializeField]
     private bool canWin = false;
 
     public bool CanWin => canWin;
