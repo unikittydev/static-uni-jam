@@ -7426,8 +7426,8 @@ MonoBehaviour:
   levelTheme: {fileID: 1698807575}
   winSound: {fileID: 985459383}
   winSoundLength: 2
-  resetProgressOnLoad: 1
-  unlockLevels: 1
+  resetProgressOnLoad: 0
+  unlockLevels: 0
 --- !u!1001 &1675206106
 PrefabInstance:
   m_ObjectHideFlags: 0
