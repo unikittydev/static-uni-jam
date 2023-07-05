@@ -32,7 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1043332186199955841
 SpriteRenderer:
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6ee3cf5af30b882479cb84614ff93558, type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -104,8 +104,9 @@ MonoBehaviour:
   canChange: 0
   canMove: 0
   needForWin: 0
-  winAmountUp: 0
   winAmountDown: 0
+  winAmountUp: 0
+  canWin: 0
 --- !u!58 &5537607845930155652
 CircleCollider2D:
   m_ObjectHideFlags: 0
