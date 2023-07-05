@@ -77,8 +77,21 @@ namespace Game
             line.SetPosition(0, PointFirst);
             line.SetPosition(1, PointSecond);
 
-            PointCharge = Vector3.Lerp(pointFirst, pointSecond, 0.5f);
+            if (Mathf.Pow(Vector3.Distance(PointFirstMax, charge.transform.position), 2) >= Mathf.Pow(Vector3.Distance(PointFirstMax, PointSecondMax), 2) + Mathf.Pow(Vector3.Distance(charge.transform.position, PointSecondMax), 2))
+            {
+                PointCharge = PointSecondMax;
+            }
+            else if (Mathf.Pow(Vector3.Distance(PointSecondMax, charge.transform.position), 2) >= Mathf.Pow(Vector3.Distance(PointFirstMax, PointSecondMax), 2) + Mathf.Pow(Vector3.Distance(charge.transform.position, PointFirstMax), 2))
+            {
+                PointCharge = PointFirstMax;
+            }
+            else
+            {
+                PointCharge = Vector3.Project(charge.transform.position - PointFirstMax, PointSecondMax - PointFirstMax) + PointFirstMax;
+            }
             charge.transform.position = PointCharge;
+
+
         }
         
         public void ChangePositions()
